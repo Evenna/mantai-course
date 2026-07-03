@@ -84,12 +84,15 @@ const slides = [
   </div>`},
 
 // 6 特邀嘉宾
-{bg:"professor", html:`
-  <div class="inner" style="align-items:center;text-align:center">
-    <div class="kicker anim" style="align-self:center">特邀嘉宾 · 学术护航</div>
-    <h2 class="anim">北京理工大学 教授 · 在线指导</h2>
-    <div class="rule anim" style="margin:1.4vw auto"></div>
-    <p class="lead anim" style="text-align:center;margin:0 auto">教授会在课程里给大家<b>做点评、把关方向</b>。<br>你的学习不只是"跟着老师做"，还有<span class="hl">高校学术层面的指导兜底</span>——<br>这是很多商业课程给不了的。</p>
+{bg:"team-bg", bgcls:"left", html:`
+  <div class="spotlight">
+    <div class="photo anim" data-bg="professor"></div>
+    <div class="body">
+      <div class="tag anim">特邀嘉宾 · 学术护航</div>
+      <h2 class="anim">北京理工大学 教授 · 在线指导</h2>
+      <p class="lead anim">教授会在课程里给大家<b>做点评、把关方向</b>。你的学习不只是"跟着老师做"，还有<span class="hl">高校学术层面的指导兜底</span>。</p>
+      <p class="lead anim" style="margin-top:1.2vw">这是很多商业课程<b>给不了</b>的——有真正的学术权威，帮你把关方向、给你信心。</p>
+    </div>
   </div>`},
 
 // 7 我们的理想
@@ -131,12 +134,22 @@ const slides = [
   </div>`},
 
 // 10 参赛拿奖
-{bg:"award", html:`
+{bg:"team-bg", html:`
   <div class="inner">
     <div class="kicker anim">路径二 · 参赛拿奖 / 打黑客松</div>
-    <h2 class="anim">不急着赚钱？<br>那就要荣誉、要能写进简历的背书</h2>
-    <p class="lead anim">我们手上有<b>各大高校和初创企业的比赛资源</b>。你用 AI 做的项目，我们能帮你<span class="hl">推荐参赛、拿奖、拿背书</span>，也能带你打黑客松赢奖金。</p>
-    <p class="lead anim" style="margin-top:1.2vw">还记得那个 <b>Nithin 的网站</b>吗？AI 做的，拿了国际大奖提名。<br>你今天做的第一个网页，只要往下走，完全可能变成一个<span class="hl-g">能拿奖、能写进简历、能帮你谈实习和工作</span>的作品。</p>
+    <h2 class="anim" style="font-size:2.9vw">不急着赚钱？那就要荣誉、要能写进简历的背书</h2>
+    <div class="split anim">
+      <div class="split-l">
+        <p class="lead">我们手上有<b>各大高校和初创企业的比赛资源</b>。你用 AI 做的项目，我们能帮你<span class="hl">推荐参赛、拿奖、拿背书</span>，也能带你打黑客松赢奖金。</p>
+        <p class="lead" style="margin-top:1vw">还记得那个 <b>Nithin 的网站</b>吗？AI 做的，拿了国际大奖提名。你今天做的第一个网页，只要往下走，完全可能变成一个<span class="hl-g">能拿奖、能写进简历、能帮你谈实习和工作</span>的作品。</p>
+      </div>
+      <div class="wall">
+        <div class="wcell"><div class="wimg" data-bg="award-1"></div><span>奖杯 / 证书</span></div>
+        <div class="wcell"><div class="wimg" data-bg="award-2"></div><span>黑客松现场</span></div>
+        <div class="wcell"><div class="wimg" data-bg="award-3"></div><span>登台领奖</span></div>
+        <div class="wcell"><div class="wimg" data-bg="award-4"></div><span>企业合作</span></div>
+      </div>
+    </div>
   </div>`},
 
 // 11 自研工具

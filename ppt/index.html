@@ -109,8 +109,15 @@ h3{font-size:2vw;font-weight:600;line-height:1.25;margin-bottom:.8vw}
   background:var(--blue);box-shadow:0 0 12px rgba(10,132,255,.6)}
 .bullets li b{font-weight:600}
 .bullets li .g::before{}
-/* 页码 & 进度 */
-.pager{position:fixed;bottom:2.2vh;right:3vw;z-index:50;font-size:1.4vh;color:var(--ink3);letter-spacing:.1em;font-family:ui-monospace,monospace}
+/* 参赛拿奖：左文右图墙 */
+.split{display:grid;grid-template-columns:1fr 1.05fr;gap:2.4vw;align-items:center;margin-top:1vw}
+.split-l .lead{max-width:none}
+.wall{display:grid;grid-template-columns:1fr 1fr;gap:1.2vw}
+.wcell{display:flex;flex-direction:column;gap:.5vw}
+.wimg{width:100%;aspect-ratio:1/1;border-radius:.9vw;background-size:cover;background-position:center;
+  border:0.5px solid var(--hair);box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 14px 30px rgba(0,0,0,.4)}
+.wcell span{font-size:.95vw;color:var(--ink3);text-align:center;letter-spacing:.05em}
+/* 页码 & 进度 */.pager{position:fixed;bottom:2.2vh;right:3vw;z-index:50;font-size:1.4vh;color:var(--ink3);letter-spacing:.1em;font-family:ui-monospace,monospace}
 .progress{position:fixed;top:0;left:0;height:2px;background:var(--blue);z-index:60;transition:width .4s ease}
 .brand{position:fixed;top:2.6vh;left:3vw;z-index:50;font-size:1.5vh;letter-spacing:.28em;color:var(--ink3);font-weight:600}
 .nav{position:fixed;bottom:2vh;left:50%;transform:translateX(-50%);z-index:50;display:flex;gap:1vw}
