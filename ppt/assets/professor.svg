@@ -1,29 +1,25 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#131318"/><stop offset="0.5" stop-color="#0d0d0f"/><stop offset="1" stop-color="#0a0a0c"/>
+    <linearGradient id="pbg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#FBFAF7"/>
     </linearGradient>
-    <radialGradient id="glow" cx="0.5" cy="0.4" r="0.62">
-      <stop offset="0" stop-color="#0A84FF" stop-opacity="0.22"/><stop offset="0.55" stop-color="#30D158" stop-opacity="0.06"/><stop offset="1" stop-color="#0d0d0f" stop-opacity="0"/>
+    <radialGradient id="paccent" cx="0.5" cy="0.55" r="0.55">
+      <stop offset="0" stop-color="#2EC4B6" stop-opacity="0.28"/><stop offset="1" stop-color="#2EC4B6" stop-opacity="0"/>
     </radialGradient>
-    <filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
-      <feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope="0.035"/></feComponentTransfer>
-      <feComposite operator="over" in2="SourceGraphic"/></filter>
   </defs>
-  <rect width="800" height="1000" fill="url(#bg)"/>
-  <rect width="800" height="1000" fill="url(#glow)"/>
-  <rect width="800" height="1000" filter="url(#n)" opacity="0.5"/>
+  <rect width="800" height="1000" fill="url(#pbg)"/>
+  <circle cx="400.0" cy="640" r="360" fill="url(#paccent)"/>
   <!-- 3D卡通剪影占位 -->
   
-  <g fill="#0A84FF" fill-opacity="0.16" stroke="#0A84FF" stroke-opacity="0.35" stroke-width="2">
-    <path d="M 170.0 1000 C 170.0 720, 260.0 640, 400.0 640 C 540.0 640, 630.0 720, 630.0 1000 Z"/>
-    <circle cx="400.0" cy="420" r="150"/>
+  <g fill="#3A86FF" fill-opacity="0.18" stroke="#3A86FF" stroke-opacity="0.4" stroke-width="3">
+    <path d="M 170.0 1000 C 170.0 730, 260.0 650, 400.0 650 C 540.0 650, 630.0 730, 630.0 1000 Z"/>
+    <circle cx="400.0" cy="430" r="150"/>
   </g>
-  <text x="400.0" y="432" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="34" fill="#F5F5F7" fill-opacity="0.5">3D 卡通</text>
-  <rect x="310.0" y="150" width="180" height="1" fill="#0A84FF" fill-opacity="0.5"/>
-  <text x="400.0" y="120" text-anchor="middle" font-family="-apple-system,PingFang SC,sans-serif" font-size="42" font-weight="600" fill="#F5F5F7" fill-opacity="0.92">特邀嘉宾 · 3D卡通</text>
-  <text x="400.0" y="180" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="26" fill="#0A84FF" fill-opacity="0.9" font-weight="600">男 · MALE</text>
-  <text x="400.0" y="880" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="26" fill="#F5F5F7" fill-opacity="0.5">北京理工大学 教授 · 睿智</text>
-  <text x="400.0" y="930" text-anchor="middle" font-family="ui-monospace,monospace" font-size="24" fill="#0A84FF" fill-opacity="0.8">assets/professor.jpg</text>
-  <text x="400.0" y="965" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="20" fill="#F5F5F7" fill-opacity="0.3">占位 · 待替换为 3D 卡通形象</text>
+  <text x="400.0" y="442" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="34" fill="#1D1B2E" fill-opacity="0.42">3D 卡通</text>
+  <rect x="310.0" y="150" width="180" height="4" rx="2" fill="#3A86FF" fill-opacity="0.7"/>
+  <text x="400.0" y="120" text-anchor="middle" font-family="-apple-system,PingFang SC,sans-serif" font-size="42" font-weight="700" fill="#1D1B2E">特邀嘉宾 · 3D卡通</text>
+  <text x="400.0" y="182" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="26" fill="#3A86FF" font-weight="700">男 · MALE</text>
+  <text x="400.0" y="880" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="26" fill="#1D1B2E" fill-opacity="0.55">北京理工大学 教授 · 睿智</text>
+  <text x="400.0" y="930" text-anchor="middle" font-family="ui-monospace,monospace" font-size="24" fill="#3A86FF" fill-opacity="0.9">assets/professor.jpg</text>
+  <text x="400.0" y="965" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="20" fill="#1D1B2E" fill-opacity="0.32">占位 · 待替换为明亮可爱 3D 卡通形象</text>
 </svg>

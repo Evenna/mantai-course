@@ -1,24 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#131318"/><stop offset="0.5" stop-color="#0d0d0f"/><stop offset="1" stop-color="#0a0a0c"/>
+    <linearGradient id="bgB" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E9E7E3"/><stop offset="1" stop-color="#D8D5CF"/>
     </linearGradient>
-    <radialGradient id="glow" cx="0.5" cy="0.4" r="0.62">
-      <stop offset="0" stop-color="#0A84FF" stop-opacity="0.22"/><stop offset="0.55" stop-color="#30D158" stop-opacity="0.06"/><stop offset="1" stop-color="#0d0d0f" stop-opacity="0"/>
-    </radialGradient>
-    <filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
-      <feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope="0.035"/></feComponentTransfer>
-      <feComposite operator="over" in2="SourceGraphic"/></filter>
   </defs>
-  <rect width="1920" height="1080" fill="url(#bg)"/>
-  <rect width="1920" height="1080" fill="url(#glow)"/>
-  <rect width="1920" height="1080" filter="url(#n)" opacity="0.5"/>
-  <g fill="none" stroke="#0A84FF" stroke-opacity="0.16" stroke-width="1">
-    <circle cx="960" cy="454" r="238"/><circle cx="960" cy="454" r="346"/>
+  <rect width="1920" height="1080" fill="url(#bgB)"/>
+  <!-- 相机图标 -->
+  <g transform="translate(960,454)" fill="none" stroke="#1D1B2E" stroke-opacity="0.28" stroke-width="6">
+    <rect x="-119" y="-76" width="238" height="162" rx="22"/>
+    <circle cx="0" cy="5" r="49"/>
+    <rect x="-49" y="-103" width="97" height="32" rx="9"/>
   </g>
-  <rect x="890" y="670" width="140" height="1" fill="#30D158" fill-opacity="0.4"/>
-  <text x="960" y="540" text-anchor="middle" font-family="-apple-system,PingFang SC,sans-serif" font-size="59" font-weight="600" fill="#F5F5F7" fill-opacity="0.92">参赛拿奖</text>
-  <text x="960" y="626" text-anchor="middle" font-family="-apple-system,PingFang SC,sans-serif" font-size="30" fill="#F5F5F7" fill-opacity="0.5">奖杯与黑客松领奖台 · 荣誉</text>
-  <text x="960" y="756" text-anchor="middle" font-family="ui-monospace,monospace" font-size="23" fill="#0A84FF" fill-opacity="0.7">assets/award.jpg</text>
-  <text x="960" y="810" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="20" fill="#F5F5F7" fill-opacity="0.3">占位图 · 待替换（见 图片生成清单.md）</text>
+  <rect x="890" y="648" width="140" height="4" rx="2" fill="#1D1B2E" fill-opacity="0.3"/>
+  <text x="960" y="572" text-anchor="middle" font-family="-apple-system,PingFang SC,sans-serif" font-size="54" font-weight="700" fill="#1D1B2E" fill-opacity="0.72">参赛拿奖</text>
+  <text x="960" y="621" text-anchor="middle" font-family="-apple-system,PingFang SC,sans-serif" font-size="28" fill="#1D1B2E" fill-opacity="0.5">写实照片 · 真实领奖现场 · 荣誉</text>
+  <text x="960" y="745" text-anchor="middle" font-family="ui-monospace,monospace" font-size="23" fill="#1D1B2E" fill-opacity="0.6">assets/award.jpg</text>
+  <text x="960" y="799" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="20" fill="#1D1B2E" fill-opacity="0.4">📷 写实照片占位 · 待替换为真实照片</text>
 </svg>

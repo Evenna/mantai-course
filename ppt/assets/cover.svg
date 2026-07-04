@@ -1,24 +1,27 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#131318"/><stop offset="0.5" stop-color="#0d0d0f"/><stop offset="1" stop-color="#0a0a0c"/>
+    <linearGradient id="bgA" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/><stop offset="0.55" stop-color="#FBFAF7"/><stop offset="1" stop-color="#F3F0EA"/>
     </linearGradient>
-    <radialGradient id="glow" cx="0.5" cy="0.4" r="0.62">
-      <stop offset="0" stop-color="#0A84FF" stop-opacity="0.22"/><stop offset="0.55" stop-color="#30D158" stop-opacity="0.06"/><stop offset="1" stop-color="#0d0d0f" stop-opacity="0"/>
+    <radialGradient id="blobP" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FF5D73" stop-opacity="0.5"/><stop offset="1" stop-color="#FF5D73" stop-opacity="0"/>
     </radialGradient>
-    <filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
-      <feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope="0.035"/></feComponentTransfer>
-      <feComposite operator="over" in2="SourceGraphic"/></filter>
+    <radialGradient id="blobO" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FF9F1C" stop-opacity="0.42"/><stop offset="1" stop-color="#FF9F1C" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="blobM" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#2EC4B6" stop-opacity="0.42"/><stop offset="1" stop-color="#2EC4B6" stop-opacity="0"/>
+    </radialGradient>
   </defs>
-  <rect width="1920" height="1080" fill="url(#bg)"/>
-  <rect width="1920" height="1080" fill="url(#glow)"/>
-  <rect width="1920" height="1080" filter="url(#n)" opacity="0.5"/>
-  <g fill="none" stroke="#0A84FF" stroke-opacity="0.16" stroke-width="1">
-    <circle cx="960" cy="454" r="238"/><circle cx="960" cy="454" r="346"/>
-  </g>
-  <rect x="890" y="670" width="140" height="1" fill="#30D158" fill-opacity="0.4"/>
-  <text x="960" y="540" text-anchor="middle" font-family="-apple-system,PingFang SC,sans-serif" font-size="59" font-weight="600" fill="#F5F5F7" fill-opacity="0.92">封面背景</text>
-  <text x="960" y="626" text-anchor="middle" font-family="-apple-system,PingFang SC,sans-serif" font-size="30" fill="#F5F5F7" fill-opacity="0.5">神经网络汇聚成光球 · 智能觉醒</text>
-  <text x="960" y="756" text-anchor="middle" font-family="ui-monospace,monospace" font-size="23" fill="#0A84FF" fill-opacity="0.7">assets/cover.jpg</text>
-  <text x="960" y="810" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="20" fill="#F5F5F7" fill-opacity="0.3">占位图 · 待替换（见 图片生成清单.md）</text>
+  <rect width="1920" height="1080" fill="url(#bgA)"/>
+  <circle cx="384" cy="302" r="367" fill="url(#blobP)"/>
+  <circle cx="1574" cy="259" r="324" fill="url(#blobO)"/>
+  <circle cx="1344" cy="886" r="346" fill="url(#blobM)"/>
+  <circle cx="960" cy="475" r="173" fill="none" stroke="#FF5D73" stroke-opacity="0.35" stroke-width="3"/>
+  <circle cx="960" cy="475" r="259" fill="none" stroke="#FF9F1C" stroke-opacity="0.28" stroke-width="3"/>
+  <rect x="890" y="659" width="140" height="4" rx="2" fill="#FF5D73" fill-opacity="0.7"/>
+  <text x="960" y="540" text-anchor="middle" font-family="-apple-system,PingFang SC,sans-serif" font-size="59" font-weight="700" fill="#1D1B2E">封面背景</text>
+  <text x="960" y="621" text-anchor="middle" font-family="-apple-system,PingFang SC,sans-serif" font-size="30" fill="#1D1B2E" fill-opacity="0.6">圆润光点汇聚成友好光球 · 明亮好奇</text>
+  <text x="960" y="756" text-anchor="middle" font-family="ui-monospace,monospace" font-size="23" fill="#FF5D73" fill-opacity="0.85">assets/cover.jpg</text>
+  <text x="960" y="810" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="20" fill="#1D1B2E" fill-opacity="0.32">明亮风占位 · 待替换（见 图片生成清单.md）</text>
 </svg>
