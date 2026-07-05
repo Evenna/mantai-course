@@ -168,9 +168,9 @@ const slides = [
 // 12 正课预告 · 总览
 {bg:"team-bg", html:`
   <div class="inner">
-    <div class="kicker anim">体验课只是开胃 · 正课才是正餐</div>
-    <h2 class="anim">正课，把 Agent 变成你自己的<br>一整套长期生产力系统</h2>
-    <p class="lead anim" style="margin-bottom:.6vw">体验课带你"跑通第一次"，正课带你把这些能力<b>真正装进日常、变成随时能调用的系统</b>。下面这些，都是正课里手把手带你搭起来的：</p>
+    <div class="kicker anim">第三部分 · AGENT 进阶</div>
+    <h2 class="anim">正课是 Agent 进阶课<br>把它变成你自己的一整套生产力系统</h2>
+    <p class="lead anim" style="margin-bottom:.6vw">体验课带你"跑通第一次"，进阶课带你把这些能力<b>真正装进日常、变成随时能调用的系统</b>。下面这些，都是进阶课里手把手带你搭起来的：</p>
     <div class="feats anim">
       <div class="feat"><div class="ic">💬</div><div class="ft">微信随时调用</div><div class="fd">离开电脑也能用，手机发一句话就触发任务。</div></div>
       <div class="feat"><div class="ic">🌐</div><div class="ft">网站部署上线</div><div class="fd">作品真正上线，配专属域名和云服务器，可访问可分享。</div></div>
@@ -183,7 +183,25 @@ const slides = [
     </div>
   </div>`},
 
-// 13 正课预告 · Skill 技能系统
+// 12.5 正课预告 · 高端进阶内容
+{bg:"mission", html:`
+  <div class="inner adv">
+    <div class="kicker anim">进阶课 · 这些才是真正拉开差距的地方</div>
+    <h2 class="anim">别人还在"会用"，你已经在<br>"搭系统"——进阶课带你啃下这些硬核</h2>
+    <p class="lead anim" style="margin-bottom:.6vw">体验课解决"能不能用"，进阶课解决"能做到多强"。下面每一项，都是让你的 Agent 从<b>玩具变成生产力工具</b>的关键：</p>
+    <div class="feats anim">
+      <div class="feat"><div class="ic">🤝</div><div class="ft">多 Agent 协作编排</div><div class="fd">一个指挥、多个分工，让一群 Agent 并行干活、互相配合，复杂任务拆开同时推进。</div></div>
+      <div class="feat"><div class="ic">🔌</div><div class="ft">MCP 工具接入</div><div class="fd">用 MCP 协议给 Agent 外挂各种工具和数据源，想接什么接什么，能力边界你自己定。</div></div>
+      <div class="feat"><div class="ic">🧬</div><div class="ft">复杂工作流编排</div><div class="fd">多步骤、带条件判断、能循环重试的自动化流程，把一整条业务链交给 Agent 跑通。</div></div>
+      <div class="feat"><div class="ic">📚</div><div class="ft">私有知识库 / RAG</div><div class="fd">把你的文档、资料喂给 Agent，让它基于你的私有知识回答，答得准、不瞎编。</div></div>
+      <div class="feat"><div class="ic">🔗</div><div class="ft">API 集成打通</div><div class="fd">对接外部系统和第三方服务，让 Agent 真正接进你的工具链，读得到、写得回。</div></div>
+      <div class="feat"><div class="ic">🖥️</div><div class="ft">自托管 / 私有化部署</div><div class="fd">把整套 Agent 部署到自己的服务器上，数据自己掌控，稳定、可控、可长期运营。</div></div>
+      <div class="feat"><div class="ic">🧭</div><div class="ft">Prompt / 上下文工程</div><div class="fd">进阶调教方法——把任务讲清楚、把上下文管好，让 Agent 输出稳定、少翻车。</div></div>
+      <div class="feat"><div class="ic">💰</div><div class="ft">成本 / 性能调优</div><div class="fd">模型怎么选、token 怎么省、速度怎么提，把系统跑得又快又省，能长期用得起。</div></div>
+    </div>
+    <p class="sub anim">这些不是概念课——每一项都手把手带你在自己的 Agent 上真正搭起来、跑起来。</p>
+  </div>`},
+
 {bg:"cover", html:`
   <div class="inner" style="align-items:flex-start">
     <div class="kicker anim">正课重头戏 · SKILL 技能系统</div>
