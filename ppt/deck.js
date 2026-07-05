@@ -99,9 +99,9 @@ const slides = [
 {bg:"mission", html:`
   <div class="inner" style="align-items:flex-start">
     <div class="kicker anim">我们做这件事的初心</div>
-    <h2 class="anim">说实话，我们做这门课<br>真不是为了赚多少钱</h2>
-    <p class="lead anim">市面同类 AI 课动辄大几千、上万。我们这个价格放进去，说句不夸张的——<span class="hl-g">基本就跟公益课差不多了。</span></p>
-    <p class="lead anim" style="margin-top:1.2vw">那图啥？<b>AI 这波浪潮是几十年一遇的风口，我们不想看着对 AI 感兴趣的人，因为没人带、因为门槛，就白白错过。</b></p>
+    <h2 class="anim">AI 这波浪潮<br>我们不想看着有人白白错过</h2>
+    <p class="lead anim">市面同类 AI 课动辄大几千、上万。我们把价格压到这儿，就是想让<span class="hl-g">门槛别再挡住任何一个愿意学的人。</span></p>
+    <p class="lead anim" style="margin-top:1.2vw"><b>这波浪潮是几十年一遇的风口。太多对 AI 感兴趣的人，只是因为没人带、因为门槛高，就白白错过了。</b>我们想做的，就是把那个"没人带"的坎给你抹平。</p>
     <p class="lead anim" style="margin-top:1.2vw">我们真心希望每个愿意学的人，都能<span class="hl">真正跟上这波先进生产力</span>——而不是几年后回头才发现"原来那时候上车最好"。</p>
   </div>`},
 
@@ -165,7 +165,102 @@ const slides = [
     </div>
   </div>`},
 
-// 12 工具福利 + 报名 CTA
+// 12 正课预告 · 总览
+{bg:"team-bg", html:`
+  <div class="inner">
+    <div class="kicker anim">体验课只是开胃 · 正课才是正餐</div>
+    <h2 class="anim">正课，把 Agent 变成你自己的<br>一整套长期生产力系统</h2>
+    <p class="lead anim" style="margin-bottom:.6vw">体验课带你"跑通第一次"，正课带你把这些能力<b>真正装进日常、变成随时能调用的系统</b>。下面这些，都是正课里手把手带你搭起来的：</p>
+    <div class="feats anim">
+      <div class="feat"><div class="ic">💬</div><div class="ft">微信随时调用</div><div class="fd">离开电脑也能用，手机发一句话就触发任务。</div></div>
+      <div class="feat"><div class="ic">🌐</div><div class="ft">网站部署上线</div><div class="fd">作品真正上线，配专属域名和云服务器，可访问可分享。</div></div>
+      <div class="feat"><div class="ic">🎨</div><div class="ft">生图 / 生视频</div><div class="fd">接入更有想象力的多模态模型，做图做视频。</div></div>
+      <div class="feat"><div class="ic">🧩</div><div class="ft">Skill 技能系统</div><div class="fd">去哪找、怎么装、怎么把你自己的经验沉淀成 skill。</div></div>
+      <div class="feat"><div class="ic">⏰</div><div class="ft">定时任务</div><div class="fd">让 Agent 定点自动干活，日报、监控、抓取全自动。</div></div>
+      <div class="feat"><div class="ic">🧠</div><div class="ft">记忆系统</div><div class="fd">它记得住你的偏好和上下文，越用越懂你、越用越顺手。</div></div>
+      <div class="feat"><div class="ic">👥</div><div class="ft">学员专属社群</div><div class="fd">AI 新品第一手、使用技巧、副业机会，一群人一起往前走。</div></div>
+      <div class="feat"><div class="ic">🚀</div><div class="ft">副业落地出口</div><div class="fd">把跑通的工作流变成能交付的产品或服务，真正变现。</div></div>
+    </div>
+  </div>`},
+
+// 13 正课预告 · Skill 技能系统
+{bg:"cover", html:`
+  <div class="inner" style="align-items:flex-start">
+    <div class="kicker anim">正课重头戏 · SKILL 技能系统</div>
+    <h2 class="anim">Skill 是什么？<br>就是给 Agent 装上"专业技能包"</h2>
+    <p class="lead anim">一个 skill，就是一套让 Agent 干好某类活的现成能力——写小红书、做 PPT、剪视频、爬数据……装上就能用。正课把这套玩法<b>从头带你打通</b>：</p>
+    <div class="steps anim">
+      <div class="step"><div class="sn">STEP 01</div><div class="st">去哪找</div><div class="sd">带你逛 <b>SkillHub 技能市场</b>——100+ 真实技能按场景分好类，搜索、办公、内容运营、视觉视频，找到你用得上的那个。</div></div>
+      <div class="sarr">→</div>
+      <div class="step"><div class="sn">STEP 02</div><div class="st">如何安装</div><div class="sd">一条命令的事。带你把感兴趣的 skill <b>装进自己的 Agent</b>，当场跑通，不卡在配置这种破事上。</div></div>
+      <div class="sarr">→</div>
+      <div class="step"><div class="sn">STEP 03</div><div class="st">沉淀自己的</div><div class="sd">最值钱的一步——把<b>你自己的经验、你的工作流</b>沉淀成一个专属 skill。以后同类活，Agent 按你的方法一键搞定。</div></div>
+    </div>
+    <p class="sub anim">别人的 skill 拿来即用，你的 skill 越攒越多——这就是你跟 AI 之间，别人复制不走的护城河。</p>
+  </div>`},
+
+// 14 正课预告 · 自动化：定时任务 + 记忆
+{bg:"tool", html:`
+  <div class="inner">
+    <div class="kicker anim">正课能力 · 让 Agent 自己动起来</div>
+    <h2 class="anim">从"你问它答"<br>到"它主动帮你干活、还记得住你"</h2>
+    <div class="duo anim">
+      <div class="dcol">
+        <div class="dh"><span class="di">⏰</span>定时任务</div>
+        <ul>
+          <li>设好时间，Agent <b>定点自动执行</b>，不用你守着。</li>
+          <li>每天早上自动出一份<b>行业日报 / 数据简报</b>推给你。</li>
+          <li>定时<b>监控网站、抓取内容、跑批处理</b>，睡一觉活就干完了。</li>
+          <li>把重复的活交给它，你只管收结果。</li>
+        </ul>
+      </div>
+      <div class="dcol">
+        <div class="dh"><span class="di">🧠</span>记忆系统</div>
+        <ul>
+          <li>它<b>记得住你的偏好、习惯、项目背景</b>，不用每次重头交代。</li>
+          <li>跨对话、跨天都还在——<b>越用越懂你</b>。</li>
+          <li>你纠正过一次的东西，它<b>记住不再犯</b>。</li>
+          <li>用得越久，它就越像一个<b>真正懂你的私人助理</b>。</li>
+        </ul>
+      </div>
+    </div>
+  </div>`},
+
+// 15 正课预告 · 部署上线 + 生图生视频 + 微信
+{bg:"cta", html:`
+  <div class="inner">
+    <div class="kicker anim">正课能力 · 让成果走出电脑、走进生活</div>
+    <h2 class="anim">做出来 · 发出去 · 随身带</h2>
+    <div class="duo anim" style="grid-template-columns:1fr 1fr 1fr">
+      <div class="dcol">
+        <div class="dh"><span class="di">🌐</span>部署上线</div>
+        <ul>
+          <li>作品<b>真正上线</b>，配专属域名。</li>
+          <li>个人<b>云服务器</b>，随时可访问。</li>
+          <li>做的东西<b>能分享、能拿去谈</b>。</li>
+        </ul>
+      </div>
+      <div class="dcol">
+        <div class="dh"><span class="di">🎨</span>生图生视频</div>
+        <ul>
+          <li>接入<b>多模态大模型</b>。</li>
+          <li>文生图、图生视频，<b>一句话出片</b>。</li>
+          <li>内容创作、素材生产<b>全打通</b>。</li>
+        </ul>
+      </div>
+      <div class="dcol">
+        <div class="dh"><span class="di">💬</span>微信调用</div>
+        <ul>
+          <li>离开电脑<b>照样能用</b>。</li>
+          <li>手机发一句话<b>就触发任务</b>。</li>
+          <li>你的 Agent，<b>装进口袋随身带</b>。</li>
+        </ul>
+      </div>
+    </div>
+    <p class="sub anim">这些不是"以后可能有"，是正课里一样一样带你搭起来、当场就能用的。</p>
+  </div>`},
+
+// 16 工具福利 + 报名 CTA
 {bg:"cta", html:`
   <div class="inner">
     <div class="kicker anim">报名正课 · 现在就是最好的时机</div>
