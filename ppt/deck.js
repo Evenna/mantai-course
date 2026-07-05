@@ -31,7 +31,7 @@ const slides = [
     <div class="kicker anim">我们的主讲团队</div>
     <h2 class="anim">一线大厂算法 × 最前沿产品 × 清华学术底子</h2>
     <p class="lead anim" style="margin-bottom:2vw">网上教 AI 的一抓一大把，凭啥跟我们学？不整虚的，一样一样说清楚。</p>
-    <div class="grid3 anim">
+    <div class="grid3 team-grid anim">
       <div class="card tcard"><div class="ph" data-bg="teacher-1"></div>
         <div class="role">前腾讯 · AI 算法工程师</div>
         <div class="name">大规模算法落地</div>
@@ -138,7 +138,7 @@ const slides = [
   <div class="inner">
     <div class="kicker anim">路径二 · 参赛拿奖 / 打黑客松</div>
     <h2 class="anim" style="font-size:2.9vw">不急着赚钱？那就要荣誉、要能写进简历的背书</h2>
-    <div class="split anim">
+    <div class="split awards anim">
       <div class="split-l">
         <p class="lead">我们手上有<b>各大高校和初创企业的比赛资源</b>。你用 AI 做的项目，我们能帮你<span class="hl">推荐参赛、拿奖、拿背书</span>，也能带你打黑客松赢奖金。</p>
         <p class="lead" style="margin-top:1vw">还记得那个 <b>Nithin 的网站</b>吗？AI 做的，拿了国际大奖提名。你今天做的第一个网页，只要往下走，完全可能变成一个<span class="hl-g">能拿奖、能写进简历、能帮你谈实习和工作</span>的作品。</p>
