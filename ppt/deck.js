@@ -124,7 +124,7 @@ const slides = [
     <h2 class="anim">我给你算笔账</h2>
     <p class="lead anim">我们手上有各种<b>企业合作和外包资源</b>。你学完会做网页、做内容、做小工具，就能通过我们平台接<span class="hl">真实商单</span>——别人付钱，你用 AI 帮他做。</p>
     <div class="calc anim">
-      <div class="box card"><div class="num" style="color:var(--ink)">&lt;500</div><div class="lbl">正课学费（元）</div></div>
+      <div class="box card"><div class="num" style="color:var(--ink)">&lt;600</div><div class="lbl">正课学费（元）</div></div>
       <div class="arrow">→</div>
       <div class="box card"><div class="num hl-g">1 单</div><div class="lbl">一个企业落地页的报酬</div></div>
       <div class="arrow">=</div>
@@ -271,8 +271,8 @@ const slides = [
       <li><b>接单 / 比赛资源出口</b>，手把手带你落地第一份 AI 副业</li>
     </ul>
     <div class="price anim">
-      <span class="old">原价 999</span>
-      <span class="new">499<span class="yuan"> 元</span></span>
+      <span class="old">原价 1299</span>
+      <span class="new">599<span class="yuan"> 元</span></span>
       <span class="plus">含 100 元 token · 工具费都帮你出了一部分</span>
     </div>
     <a class="btn anim" href="#">趁手感最热的时候，按下报名键 →</a>
