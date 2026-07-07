@@ -7,10 +7,17 @@ function bgImg(name){
 function applyBg(el, name, cls){
   const svg = `assets/${name}.svg`;
   const jpg = `assets/${name}.jpg`;
+  const png = `assets/${name}.png`;
   el.style.backgroundImage = `url("${svg}")`;
-  const probe = new Image();
-  probe.onload = ()=>{ el.style.backgroundImage = `url("${jpg}")`; };
-  probe.src = jpg;
+  // 优先探测透明底 PNG 抠图 → 再 JPG → 兜底 SVG
+  const pp = new Image();
+  pp.onload = ()=>{ el.style.backgroundImage = `url("${png}")`; el.classList.add("cutout"); };
+  pp.onerror = ()=>{
+    const probe = new Image();
+    probe.onload = ()=>{ el.style.backgroundImage = `url("${jpg}")`; };
+    probe.src = jpg;
+  };
+  pp.src = png;
 }
 
 // ===== 幻灯片内容 =====
