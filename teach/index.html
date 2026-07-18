@@ -297,23 +297,38 @@ h3{font-size:2vw;font-weight:600;line-height:1.25;margin-bottom:.8vw}
 .skgrid.g4 .skcard .qn{position:absolute;top:1vw;right:1.1vw;font-size:1.1vw;font-weight:800;color:var(--ink3);opacity:.5}
 /* 数据统计：加副说明 */
 .stat .sd{font-size:.72vw;color:var(--ink3);margin-top:.3vw;line-height:1.3}
-/* 浏览器窗口 mockup：给网站截图套真实窗口 chrome */
-.browser{border-radius:1vw;overflow:hidden;border:1px solid var(--hair);background:var(--bg2);
-  box-shadow:0 26px 60px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.08)}
-.browser .bchrome{display:flex;align-items:center;gap:.7vw;padding:.7vw 1vw;background:rgba(255,255,255,.04);border-bottom:1px solid var(--hair)}
-.browser .bdots{display:flex;gap:.45vw}
-.browser .bdots i{width:.72vw;height:.72vw;border-radius:50%;display:inline-block}
-.browser .bdots i:nth-child(1){background:#FF5F57}.browser .bdots i:nth-child(2){background:#FEBC2E}.browser .bdots i:nth-child(3){background:#28C840}
-.browser .burl{flex:1;display:flex;align-items:center;gap:.5vw;font-size:.82vw;color:var(--ink3);
-  background:var(--bg);border:1px solid var(--hair);border-radius:.5vw;padding:.4vw .9vw;overflow:hidden;white-space:nowrap}
-.browser .burl .ico{width:.9vw;height:.9vw;color:var(--green);flex:none}
-.browser .bshot{display:block;width:100%;object-fit:cover;object-position:top center}
-/* 截图+说明左右分栏 */
-.sitegrid{display:grid;grid-template-columns:1.25fr .75fr;gap:2.2vw;align-items:center;margin-top:1.2vw}
-.sitegrid.left{grid-template-columns:.75fr 1.25fr}
-.sitegrid .sinfo h3{font-size:1.6vw;margin-bottom:.7vw}
-.sitegrid .sinfo p{font-size:1.02vw;line-height:1.6;color:var(--ink2);margin-bottom:1vw}
-.sitegrid .browser .bshot{height:26vh}
+/* ===== 网站截图：精致画框（无浏览器 chrome） ===== */
+.shot{position:relative;border-radius:1.1vw;overflow:hidden;
+  background:linear-gradient(135deg,rgba(91,155,255,.5),rgba(52,224,206,.25) 45%,rgba(164,107,255,.4));
+  padding:1.5px;box-shadow:0 30px 70px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.05)}
+.shot::before{content:"";position:absolute;inset:0;border-radius:1.1vw;padding:1.5px;
+  background:linear-gradient(135deg,rgba(255,255,255,.35),rgba(255,255,255,0) 40%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;z-index:2}
+.shot img{display:block;width:100%;border-radius:1vw;object-fit:cover;object-position:top center}
+.shot .glow{position:absolute;inset:0;border-radius:1vw;pointer-events:none;z-index:1;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.18),inset 0 -40px 60px -40px rgba(0,0,0,.5)}
+.shot .tag{position:absolute;left:1vw;bottom:1vw;z-index:3;display:inline-flex;align-items:center;gap:.4vw;
+  font-size:.78vw;font-weight:600;color:#fff;background:rgba(11,11,16,.72);backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,.14);border-radius:2vw;padding:.4vw .9vw}
+.shot .tag .ico{width:.95vw;height:.95vw;color:var(--green)}
+/* 长图裁窗：完整比例塞入固定视窗（contain，不裁切） */
+.shot.win{display:flex;background:linear-gradient(135deg,rgba(91,155,255,.45),rgba(164,107,255,.4))}
+.shot.win img{width:100%;height:100%;object-fit:contain;background:#0e0e15}
+/* 截图 + 说明左右分栏 */
+.sitegrid{display:grid;grid-template-columns:1.15fr .85fr;gap:2.4vw;align-items:center;margin-top:1.4vw}
+.sitegrid.flip{grid-template-columns:.85fr 1.15fr}
+.sitegrid .sinfo h3{font-size:1.65vw;margin-bottom:.7vw;line-height:1.2}
+.sitegrid .sinfo p{font-size:1.02vw;line-height:1.65;color:var(--ink2);margin-bottom:1vw}
+/* 双截图并排画廊 —— 完整比例不裁切 */
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:1.8vw;margin-top:1.3vw;align-items:start}
+.gallery.g3{grid-template-columns:1fr 1fr 1fr}
+.gallery .shot{background:linear-gradient(135deg,rgba(91,155,255,.4),rgba(164,107,255,.35))}
+.gallery .shot img{width:100%;height:auto;max-height:30vh;object-fit:contain;background:#0e0e15}
+.gallery .cap{margin-top:.7vw;font-size:.92vw;color:var(--ink2);text-align:center;line-height:1.4}
+.gallery .cap b{color:var(--ink)}
+/* 全幅截图背景（保比例、居中裁窗、暗化叠层） */
+.bg.shotbg::after{background:linear-gradient(180deg,rgba(11,11,16,.55),rgba(11,11,16,.82) 60%,rgba(11,11,16,.95))}
 
 </style>
 </head>

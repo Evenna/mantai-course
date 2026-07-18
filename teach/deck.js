@@ -89,10 +89,10 @@ slides.push({bg:"", html:`
     <div class="kicker anim">课程来源 · 曼塔 AI 体验课</div>
     <h2 class="anim">我们从这里出发</h2>
     <div class="sitegrid anim">
-      <div class="browser">
-        <div class="bchrome"><div class="bdots"><i></i><i></i><i></i></div>
-          <div class="burl">${I.globe}mantai.me</div></div>
-        <img class="bshot" src="img/site-mantai.jpg" alt="曼塔 AI 体验课首页" style="height:30vh">
+      <div class="shot win" style="height:34vh">
+        <img src="img/hero-mantai.jpg" alt="曼塔 AI 体验课首页">
+        <div class="glow"></div>
+        <div class="tag">${I.globe}mantai.me</div>
       </div>
       <div class="sinfo">
         <h3>让 AI Agent 真正上岗</h3>
@@ -107,6 +107,28 @@ slides.push({bg:"", html:`
         </div>
       </div>
     </div>
+  </div>`});
+
+// ===== 1.6 曼塔课程一览 · 真实页面 gallery =====
+slides.push({bg:"", html:`
+  <div class="inner">
+    <div class="kicker anim">课程一览 · 来自曼塔官网的真实页面</div>
+    <h2 class="anim">这套课，长什么样</h2>
+    <div class="gallery g3 anim">
+      <div>
+        <div class="shot"><img src="img/sec-mentor.jpg" alt="课程主理人"><div class="glow"></div></div>
+        <div class="cap"><b>一线大厂 AI 团队</b><br>前字节 / 前微信，手把手带上岗</div>
+      </div>
+      <div>
+        <div class="shot"><img src="img/sec-skills.jpg" alt="SkillHub 技能库"><div class="glow"></div></div>
+        <div class="cap"><b>100+ SkillHub 技能</b><br>搜索 / 办公 / 运营 / 视觉视频</div>
+      </div>
+      <div>
+        <div class="shot"><img src="img/sec-cases.jpg" alt="真实案例"><div class="glow"></div></div>
+        <div class="cap"><b>真实案例成果</b><br>输入什么、Agent 做了什么、交付什么</div>
+      </div>
+    </div>
+    <p class="sub anim">今天我们要做的，就是把上面这套流程，<b>亲手在你自己的电脑上跑一遍</b>。</p>
   </div>`});
 
 // ===== 2 今天的路线图 =====
@@ -335,19 +357,24 @@ slides.push({bg:"", html:`
     <div class="kicker anim">第一步 · 装上专属技能</div>
     <h2 class="anim">安装 Future Design Skill</h2>
     <p class="lead anim">和基础 Skill 一样一句话就能装。<b>注意：这套技能全程用 Hermes，不再教 Codex</b>——和前面的操作完全一致，无缝衔接。</p>
-    <div class="term anim">
-      <div class="bar"><i class="r"></i><i class="y"></i><i class="g"></i><span class="ttl">安装 Future Design Skill</span></div>
-      <pre><span class="cmt"># 打开安装页拿到技能地址：future-design-lab.github.io/tools/skill-install.html</span>
+    <div class="sitegrid flip anim">
+      <div class="shot win" style="height:32vh">
+        <img src="img/hero-futuredesign.jpg" alt="Future Design 技能安装页">
+        <div class="glow"></div>
+        <div class="tag">${I.globe}future-design-lab.github.io</div>
+      </div>
+      <div class="sinfo">
+        <div class="term" style="margin:0">
+          <div class="bar"><i class="r"></i><i class="y"></i><i class="g"></i><span class="ttl">安装 Future Design Skill</span></div>
+          <pre><span class="cmt"># 打开左侧安装页拿到技能地址</span>
 <span class="prm">你 ›</span> <span class="cmd">帮我安装 future design 的 skill</span>
-<span class="out">✓ 已安装 future-design 技能包。现在我能带你走完
-  未来信号 → 解读 → 原型卡 → 明日头条 → 回溯路线图 的完整设计流程。</span></pre>
+<span class="out">✓ 已安装 future-design 技能包。
+  未来信号 → 解读 → 原型卡 →
+  明日头条 → 回溯路线图</span></pre>
+        </div>
+        <div class="callout" style="margin-top:1vw"><div class="ci">${I.check}</div><div class="cx">装完，Agent 就成了你的<b>「未来设计共创搭档」</b>——零切换，陪你把项目做完。</div></div>
+      </div>
     </div>
-    <div class="browser anim" style="margin-top:1vw">
-      <div class="bchrome"><div class="bdots"><i></i><i></i><i></i></div>
-        <div class="burl">${I.globe}future-design-lab.github.io/tools/skill-install.html</div></div>
-      <img class="bshot" src="img/site-futuredesign.jpg" alt="Future Design 技能安装页" style="height:22vh">
-    </div>
-    <div class="callout anim"><div class="ci">${I.check}</div><div class="cx">装完之后，Agent 就变成了你的<b>「未来设计共创搭档」</b>——和前面的操作零切换，全程陪你把项目做完。</div></div>
   </div>`});
 
 // ===== 15 项目引入 =====
