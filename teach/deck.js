@@ -53,6 +53,18 @@ const I = {
   gyro: ic('<circle cx="12" cy="12" r="8"/><ellipse cx="12" cy="12" rx="8" ry="3"/><ellipse cx="12" cy="12" rx="3" ry="8"/>', {w:1.3}),
   flame: ic('<path d="M12 3c1 3 4 4 4 8a4 4 0 0 1-8 0c0-2 1-3 1-4 1 1 2 1 2 0 0-1.5-.5-2.5 1-4z"/>'),
   orbit: ic('<circle cx="12" cy="12" r="2.5"/><ellipse cx="12" cy="12" rx="9" ry="4" transform="rotate(30 12 12)"/><circle cx="20" cy="8" r="1.2"/>', {w:1.3}),
+  check: ic('<path d="M20 6 9 17l-5-5"/>'),
+  layers: ic('<path d="M12 3 3 8l9 5 9-5-9-5z"/><path d="M3 13l9 5 9-5M3 8v5m18-5v5"/>'),
+  target: ic('<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1"/>'),
+  sparkle: ic('<path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M18 15l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/>'),
+  clock: ic('<circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/>'),
+  users: ic('<circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M16 6a3 3 0 0 1 0 6M21 20a6 6 0 0 0-4-5.7"/>'),
+  globe: ic('<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>'),
+  wand: ic('<path d="M15 4V2M15 10V8M11 6h2M17 6h2"/><path d="M6 20 18 8l-2-2L4 18z"/>'),
+  gear: ic('<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>'),
+  folder: ic('<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>'),
+  compass: ic('<circle cx="12" cy="12" r="9"/><path d="M15.5 8.5 13 13l-4.5 2.5L11 11z"/>'),
+  map: ic('<path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/>'),
 };
 
 // ===== 1 封面 =====
@@ -63,6 +75,12 @@ slides.push({bg:"img/cover.jpg", bgcls:"left", html:`
     <div class="rule anim"></div>
     <p class="lead anim">这节课不讲概念——从<b>安装、配置</b>，到装好一套<b>基础技能</b>把 Agent 玩起来，<br>再用 <span class="hl-g">Future Design 专属 Skill</span> 一步步把我们的<span class="hl">太空艺术设计项目</span>真正做出来。</p>
     <p class="sub anim">全程使用 Hermes Agent（不再用 Codex），与体验课完全一致，一套工具走到底。</p>
+    <div class="metarow anim">
+      <span class="chip">${I.clock}<b>约 90 分钟</b>&nbsp;实战工作坊</span>
+      <span class="chip">${I.layers}<b>5 阶段</b>&nbsp;从装机到交付</span>
+      <span class="chip">${I.rocket}<b>1 个真实项目</b>&nbsp;太空艺术设计</span>
+      <span class="chip">${I.check}&nbsp;零基础可跟</span>
+    </div>
   </div>`});
 
 // ===== 2 今天的路线图 =====
@@ -82,12 +100,22 @@ slides.push({bg:"", html:`
 
 // ===== 3 章节 01 =====
 slides.push({bg:"img/ch1.jpg", bgcls:"left", html:`
-  <div class="chapter">
-    <div class="cnum anim">01</div>
-    <div class="clabel anim">Install & Configure</div>
-    <h2 class="anim">安装 & 配置 Hermes Agent</h2>
-    <p class="lead anim">先把工具装好、把「大脑」接上——这一步过了，后面全是玩。</p>
-    <div class="ctrail anim"><span class="on">01 安装配置</span><span>02 基础 Skill</span><span>03 用它提效</span><span>04 项目 Skill</span><span>05 案例收尾</span></div>
+  <div class="chapter rich">
+    <div class="cleft">
+      <div class="cnum anim">01</div>
+      <div class="clabel anim">Install & Configure</div>
+      <h2 class="anim">安装 & 配置 Hermes Agent</h2>
+      <p class="lead anim">先把工具装好、把「大脑」接上——这一步过了，后面全是玩。</p>
+      <div class="ctrail anim"><span class="on">01 安装配置</span><span>02 基础 Skill</span><span>03 用它提效</span><span>04 项目 Skill</span><span>05 案例收尾</span></div>
+    </div>
+    <div class="chwill anim">
+      <div class="wt">本章你会拿到</div>
+      <ul>
+        <li><span class="k">${I.install}</span><div>一条命令<b>装好 Hermes</b>，本机就有了 AI Agent</div></li>
+        <li><span class="k">${I.gear}</span><div>接上模型，<b>用曼塔一个入口</b>，不翻墙不办会员</div></li>
+        <li><span class="k">${I.chat}</span><div>第一句对话就能跑通，<b>确认环境 OK</b></div></li>
+      </ul>
+    </div>
   </div>`});
 
 // ===== 4 安装 =====
@@ -105,7 +133,7 @@ slides.push({bg:"", html:`
 <span class="prm">$</span> <span class="cmd">hermes</span>
 <span class="out">✓ Hermes Agent 已就绪，输入你的第一句话开始对话。</span></pre>
     </div>
-    <p class="sub anim">装不上不要慌——现场老师会一个个帮你过，绝不让任何人卡在第一步。</p>
+    <div class="callout warn anim"><div class="ci">${I.check}</div><div class="cx">装不上不要慌——现场老师会<b>一个个帮你过</b>，绝不让任何人卡在第一步。</div></div>
   </div>`});
 
 // ===== 5 配置 =====
@@ -119,16 +147,28 @@ slides.push({bg:"", html:`
       <div class="row"><div class="rn">2</div><div class="rb"><h4>选模型</h4><p>用 <code>hermes config</code> 选默认模型，哪个强用哪个，随时一键切换。</p></div></div>
       <div class="row"><div class="rn">3</div><div class="rb"><h4>验证</h4><p>回到对话里问一句「你好，你现在用的什么模型？」，能答上来就通了。</p></div></div>
     </div>
+    <div class="callout anim"><div class="ci">${I.gear}</div><div class="cx">一次配好，<b>永久生效</b>——之后每次打开 Hermes 都直接可用，不用重复设置。</div></div>
   </div>`});
 
 // ===== 6 章节 02 =====
 slides.push({bg:"img/ch2.jpg", bgcls:"left", html:`
-  <div class="chapter">
-    <div class="cnum anim">02</div>
-    <div class="clabel anim">Base Skills</div>
-    <h2 class="anim">装几个基础 Skill，把 Agent 玩起来</h2>
-    <p class="lead anim">Skill = 给 Agent 装上的「专业技能包」。装上就能用，先玩几个高频的，建立手感。</p>
-    <div class="ctrail anim"><span>01 安装配置</span><span class="on">02 基础 Skill</span><span>03 用它提效</span><span>04 项目 Skill</span><span>05 案例收尾</span></div>
+  <div class="chapter rich">
+    <div class="cleft">
+      <div class="cnum anim">02</div>
+      <div class="clabel anim">Base Skills</div>
+      <h2 class="anim">装几个基础 Skill，把 Agent 玩起来</h2>
+      <p class="lead anim">Skill = 给 Agent 装上的「专业技能包」。装上就能用，先玩几个高频的，建立手感。</p>
+      <div class="ctrail anim"><span>01 安装配置</span><span class="on">02 基础 Skill</span><span>03 用它提效</span><span>04 项目 Skill</span><span>05 案例收尾</span></div>
+    </div>
+    <div class="chwill anim">
+      <div class="wt">这章要玩的四个 Skill</div>
+      <ul>
+        <li><span class="k">${I.book}</span><div><b>小红书</b>：选题、爆款标题、文案配图一条龙</div></li>
+        <li><span class="k">${I.film}</span><div><b>抖音</b>：对标拆解、脚本分镜、口播文案</div></li>
+        <li><span class="k">${I.search}</span><div><b>Web Search</b>：实时联网，抓资料整理成表</div></li>
+        <li><span class="k">${I.image}</span><div><b>多模态生成</b>：一句话文生图 / 图生视频</div></li>
+      </ul>
+    </div>
   </div>`});
 
 // ===== 7 Skill 是什么 & 怎么装 =====
@@ -146,7 +186,13 @@ slides.push({bg:"", html:`
 <span class="cmt"># 或指定技能市场地址一键安装</span>
 <span class="prm">你 ›</span> <span class="cmd">用 npx skills add &lt;技能包地址&gt; 装上这个 skill</span></pre>
     </div>
-    <p class="sub anim">别人做好的 Skill 拿来即用；你自己的经验，以后也能沉淀成专属 Skill。</p>
+    <div class="howflow anim">
+      <div class="hf"><div class="hfi">${I.install}</div><h5>装</h5><p>一句话安装，技能进入 Agent</p></div>
+      <div class="hfa">→</div>
+      <div class="hf"><div class="hfi">${I.chat}</div><h5>说</h5><p>用大白话下达你的需求</p></div>
+      <div class="hfa">→</div>
+      <div class="hf"><div class="hfi">${I.check}</div><h5>干</h5><p>Agent 自动调用技能交付成果</p></div>
+    </div>
   </div>`});
 
 // ===== 8 四个基础 Skill =====
@@ -174,16 +220,28 @@ slides.push({bg:"", html:`
       <div class="skcard"><div class="sktag">抖音</div><h4>让它写口播脚本</h4><div class="ex">"把这个选题写成一条 30 秒抖音口播脚本，带分镜"</div></div>
       <div class="skcard"><div class="sktag">多模态生成</div><h4>让它出图出片</h4><div class="ex">"用 generate-multimodal-media 生成一张未来太空舱内部的概念图"</div></div>
     </div>
+    <div class="callout anim"><div class="ci">${I.sparkle}</div><div class="cx">要点只有一个：<b>把「要什么」说清楚</b>——主题、风格、篇幅、格式。说得越具体，产出越接近你要的样子。</div></div>
   </div>`});
 
 // ===== 10 章节 03 =====
 slides.push({bg:"img/ch3.jpg", bgcls:"left", html:`
-  <div class="chapter">
-    <div class="cnum anim">03</div>
-    <div class="clabel anim">Work Smarter</div>
-    <h2 class="anim">懂得用 Agent 给工作提效</h2>
-    <p class="lead anim">工具会用了，关键是转变思路——把「自己一步步做」变成「交代清楚、让它替你做」。</p>
-    <div class="ctrail anim"><span>01 安装配置</span><span>02 基础 Skill</span><span class="on">03 用它提效</span><span>04 项目 Skill</span><span>05 案例收尾</span></div>
+  <div class="chapter rich">
+    <div class="cleft">
+      <div class="cnum anim">03</div>
+      <div class="clabel anim">Work Smarter</div>
+      <h2 class="anim">懂得用 Agent 给工作提效</h2>
+      <p class="lead anim">工具会用了，关键是转变思路——把「自己一步步做」变成「交代清楚、让它替你做」。</p>
+      <div class="ctrail anim"><span>01 安装配置</span><span>02 基础 Skill</span><span class="on">03 用它提效</span><span>04 项目 Skill</span><span>05 案例收尾</span></div>
+    </div>
+    <div class="chwill anim">
+      <div class="wt">这章要建立的心法</div>
+      <ul>
+        <li><span class="k">${I.chat}</span><div>把任务<b>说清楚</b>，输出就稳、少返工</div></li>
+        <li><span class="k">${I.puzzle}</span><div>把多个 Skill <b>串成一条链</b>，一次跑完一整件事</div></li>
+        <li><span class="k">${I.brain}</span><div>让它<b>记住你的偏好</b>，不用每次重头交代</div></li>
+        <li><span class="k">${I.pin}</span><div>跑通的流程<b>沉淀成 Skill</b>，同类活一键复用</div></li>
+      </ul>
+    </div>
   </div>`});
 
 // ===== 11 思路转变 =====
@@ -226,12 +284,23 @@ slides.push({bg:"", html:`
 
 // ===== 13 章节 04 =====
 slides.push({bg:"img/ch4.jpg", bgcls:"left", html:`
-  <div class="chapter">
-    <div class="cnum anim">04</div>
-    <div class="clabel anim">Future Design Skill</div>
-    <h2 class="anim">重点来了：Future Design 专属 Skill</h2>
-    <p class="lead anim">前面都是热身。这一章，我们用一套专门的技能，把今天的<b>太空艺术设计项目</b>真正做出来。</p>
-    <div class="ctrail anim"><span>01 安装配置</span><span>02 基础 Skill</span><span>03 用它提效</span><span class="on">04 项目 Skill</span><span>05 案例收尾</span></div>
+  <div class="chapter rich">
+    <div class="cleft">
+      <div class="cnum anim">04</div>
+      <div class="clabel anim">Future Design Skill</div>
+      <h2 class="anim">重点来了：Future Design 专属 Skill</h2>
+      <p class="lead anim">前面都是热身。这一章，我们用一套专门的技能，把今天的<b>太空艺术设计项目</b>真正做出来。</p>
+      <div class="ctrail anim"><span>01 安装配置</span><span>02 基础 Skill</span><span>03 用它提效</span><span class="on">04 项目 Skill</span><span>05 案例收尾</span></div>
+    </div>
+    <div class="chwill anim">
+      <div class="wt">本章带你走完</div>
+      <ul>
+        <li><span class="k">${I.install}</span><div>一句话<b>装上 Future Design Skill</b>（全程 Hermes）</div></li>
+        <li><span class="k">${I.compass}</span><div>认识内置的<b>六步设计方法链</b></div></li>
+        <li><span class="k">${I.chat}</span><div>跟 Agent 对话，<b>把方法链跑一遍</b></div></li>
+        <li><span class="k">${I.frame}</span><div>产出<b>你自己的太空设计提案</b></div></li>
+      </ul>
+    </div>
   </div>`});
 
 // ===== 14 安装 Future Design Skill =====
@@ -247,7 +316,7 @@ slides.push({bg:"", html:`
 <span class="out">✓ 已安装 future-design 技能包。现在我能带你走完
   未来信号 → 解读 → 原型卡 → 明日头条 → 回溯路线图 的完整设计流程。</span></pre>
     </div>
-    <p class="sub anim">装完之后，Agent 就变成了你的「未来设计共创搭档」，全程陪你把项目做完。</p>
+    <div class="callout anim"><div class="ci">${I.check}</div><div class="cx">装完之后，Agent 就变成了你的<b>「未来设计共创搭档」</b>——和前面的操作零切换，全程陪你把项目做完。</div></div>
   </div>`});
 
 // ===== 15 项目引入 =====
@@ -257,10 +326,10 @@ slides.push({bg:"img/project.jpg", html:`
     <h2 class="anim">国际太空艺术设计共创营</h2>
     <p class="lead anim">这不是练习题——是一个真实的国际共创项目。你要用刚学会的 Agent，产出一份属于自己的<b>未来太空设计提案</b>。</p>
     <div class="stats anim">
-      <div class="stat"><div class="num">6</div><div class="lab">创作赛道</div></div>
-      <div class="stat"><div class="num">6</div><div class="lab">导师带队</div></div>
-      <div class="stat"><div class="num">18+</div><div class="lab">国家 / 地区</div></div>
-      <div class="stat"><div class="num">30+</div><div class="lab">参与院校</div></div>
+      <div class="stat"><div class="num">6</div><div class="lab">创作赛道</div><div class="sd">具身 / 文化 / 时间 / 生态…</div></div>
+      <div class="stat"><div class="num">6</div><div class="lab">导师带队</div><div class="sd">跨学科专家全程点评</div></div>
+      <div class="stat"><div class="num">18+</div><div class="lab">国家 / 地区</div><div class="sd">全球同侪一起共创</div></div>
+      <div class="stat"><div class="num">30+</div><div class="lab">参与院校</div><div class="sd">艺术 / 设计 / 科技交叉</div></div>
     </div>
     <div class="phases anim">
       <span class="ph">① 知识输入 Knowledge</span><span class="arr">→</span>
@@ -289,6 +358,11 @@ slides.push({bg:"", html:`
       <div class="carr">→</div>
       <div class="clink"><div class="cst">06</div><div class="ctt">回溯路线图</div><div class="cdd">Backcasting：从未来倒推今天怎么做</div></div>
     </div>
+    <div class="legend anim">
+      <span><i style="background:var(--blue)"></i>发散：捕捉信号、多维扫描</span>
+      <span><i style="background:var(--yellow)"></i>聚焦：落到本地挑战与解读</span>
+      <span><i style="background:var(--pink)"></i>成形：头条叙事 + 回溯行动</span>
+    </div>
     <p class="sub anim">你只需要对话，Agent 用这条链把你的灵感，变成一份有逻辑、有结构的设计提案。</p>
   </div>`});
 
@@ -297,9 +371,10 @@ slides.push({bg:"", html:`
   <div class="inner">
     <div class="kicker anim">实操 · 用这套 Skill 把项目做出来</div>
     <h2 class="anim">你只管对话，它带你走完全流程</h2>
-    <div class="term anim tall">
-      <div class="bar"><i class="r"></i><i class="y"></i><i class="g"></i><span class="ttl">Hermes · Future Design 共创</span></div>
-      <pre><span class="prm">你 ›</span> <span class="cmd">我选「新太空仪式感物件」赛道，用 future design skill 带我开始</span>
+    <div class="annot anim">
+      <div class="term tall">
+        <div class="bar"><i class="r"></i><i class="y"></i><i class="g"></i><span class="ttl">Hermes · Future Design 共创</span></div>
+        <pre><span class="prm">你 ›</span> <span class="cmd">我选「新太空仪式感物件」赛道，用 future design skill 带我开始</span>
 <span class="out">✓ 好，先做未来信号扫描。你观察到哪些跟「太空生活」相关的新变化？</span>
 <span class="prm">你 ›</span> <span class="cmd">长期驻留太空的人，会想念地球上的节日和仪式……</span>
 <span class="out">✓ 很好，这是一个强信号。我用 STEEP 帮你展开 →
@@ -307,6 +382,12 @@ slides.push({bg:"", html:`
   再用 Backcasting 倒推出你现在该设计什么物件。</span>
 <span class="prm">你 ›</span> <span class="cmd">再用 generate-multimodal-media 把这个物件画出来</span>
 <span class="out">✓ 已生成概念图 + 30 秒展示视频，可直接放进你的提案。</span></pre>
+      </div>
+      <div class="asteps">
+        <div class="as"><div class="asn">对话即操作</div><h5>你说人话，它做事</h5><p>不用记命令，选个赛道、描述你的观察就行。</p></div>
+        <div class="as"><div class="asn">方法内置</div><h5>它替你套流程</h5><p>STEEP、Backcasting 这些方法，Agent 自动带你走。</p></div>
+        <div class="as"><div class="asn">一站到底</div><h5>顺手出图出片</h5><p>调基础 Skill 生成视觉，提案当场就有画面。</p></div>
+      </div>
     </div>
   </div>`});
 
@@ -316,22 +397,32 @@ slides.push({bg:"", html:`
     <div class="kicker anim">这节课结束时 · 你手里会有</div>
     <h2 class="anim">一份完整、能拿去展览的设计提案</h2>
     <div class="skgrid g4 anim">
-      <div class="skcard"><div class="skic">${I.signal}</div><h4>未来信号 & 解读</h4><p>一份结构化的趋势判断，说清「为什么是它」。</p></div>
-      <div class="skcard"><div class="skic">${I.card}</div><h4>原型卡 Prototyping Card</h4><p>你的核心设计概念，一张卡讲清楚。</p></div>
-      <div class="skcard"><div class="skic">${I.news}</div><h4>明日头条</h4><p>一句话把观众带进你设想的未来场景。</p></div>
-      <div class="skcard"><div class="skic">${I.frame}</div><h4>概念图 & 视频</h4><p>AI 生成的视觉素材，提案立刻有画面。</p></div>
+      <div class="skcard"><span class="qn">01</span><div class="skic">${I.signal}</div><h4>未来信号 & 解读</h4><p>一份结构化的趋势判断，说清「为什么是它」。</p></div>
+      <div class="skcard"><span class="qn">02</span><div class="skic">${I.card}</div><h4>原型卡 Prototyping Card</h4><p>你的核心设计概念，一张卡讲清楚。</p></div>
+      <div class="skcard"><span class="qn">03</span><div class="skic">${I.news}</div><h4>明日头条</h4><p>一句话把观众带进你设想的未来场景。</p></div>
+      <div class="skcard"><span class="qn">04</span><div class="skic">${I.frame}</div><h4>概念图 & 视频</h4><p>AI 生成的视觉素材，提案立刻有画面。</p></div>
     </div>
-    <p class="sub anim">从一个模糊的想法，到一套能展示、能答辩的完整成果——今天就能做出来。</p>
+    <div class="callout anim"><div class="ci">${I.check}</div><div class="cx">四份成果拼在一起，就是一份<b>能展示、能答辩、能落地</b>的完整提案——不用另外排版。</div></div>
   </div>`});
 
 // ===== 19 章节 05 =====
 slides.push({bg:"img/ch5.jpg", bgcls:"left", html:`
-  <div class="chapter">
-    <div class="cnum anim">05</div>
-    <div class="clabel anim">Showcase & Wrap-up</div>
-    <h2 class="anim">优秀案例 & 收尾</h2>
-    <p class="lead anim">看看往届和同侪做出了什么，找到你的方向，然后——开始动手。</p>
-    <div class="ctrail anim"><span>01 安装配置</span><span>02 基础 Skill</span><span>03 用它提效</span><span>04 项目 Skill</span><span class="on">05 案例收尾</span></div>
+  <div class="chapter rich">
+    <div class="cleft">
+      <div class="cnum anim">05</div>
+      <div class="clabel anim">Showcase & Wrap-up</div>
+      <h2 class="anim">优秀案例 & 收尾</h2>
+      <p class="lead anim">看看往届和同侪做出了什么，找到你的方向，然后——开始动手。</p>
+      <div class="ctrail anim"><span>01 安装配置</span><span>02 基础 Skill</span><span>03 用它提效</span><span>04 项目 Skill</span><span class="on">05 案例收尾</span></div>
+    </div>
+    <div class="chwill anim">
+      <div class="wt">这章会看到</div>
+      <ul>
+        <li><span class="k">${I.trophy}</span><div>三个不同赛道的<b>代表作拆解</b></div></li>
+        <li><span class="k">${I.compass}</span><div>它们<b>怎么用同一条方法链</b>做出来的</div></li>
+        <li><span class="k">${I.rocket}</span><div>把今天所学<b>收进口袋，立刻开工</b></div></li>
+      </ul>
+    </div>
   </div>`});
 
 // ===== 20 案例展示 =====
@@ -340,9 +431,9 @@ slides.push({bg:"", html:`
     <div class="kicker anim">优秀案例 · 四大方向的代表作</div>
     <h2 class="anim">别人用同样的流程，做出了这些</h2>
     <div class="cases anim">
-      <div class="ccard"><div class="cimg" data-bg="img/case1.jpg"></div><div class="cbody"><div class="ctag">具身体验 · 交互设计</div><h4>零重力下的身体与感知</h4><p>把失重的空间体验，转译成可交互的装置。</p></div></div>
-      <div class="ccard"><div class="cimg" data-bg="img/case2.jpg"></div><div class="cbody"><div class="ctag">文化结构 · 仪式演化</div><h4>太空里的新节日</h4><p>脱离地球后，人类如何重建仪式与归属感。</p></div></div>
-      <div class="ccard"><div class="cimg" data-bg="img/case3.jpg"></div><div class="cbody"><div class="ctag">时间重构 · 情感连接</div><h4>跨越光年的思念</h4><p>当通讯有延迟，情感如何被重新设计与承载。</p></div></div>
+      <div class="ccard"><div class="cimg" data-bg="img/case1.jpg"><span class="cbadge">赛道 · 具身体验</span></div><div class="cbody"><div class="ctag">具身体验 · 交互设计</div><h4>零重力下的身体与感知</h4><p>把失重的空间体验，转译成可交互的装置。</p><div class="cmeta"><div><b>2043</b>明日头条</div><div><b>4 步</b>方法链推导</div></div></div></div>
+      <div class="ccard"><div class="cimg" data-bg="img/case2.jpg"><span class="cbadge">赛道 · 文化结构</span></div><div class="cbody"><div class="ctag">文化结构 · 仪式演化</div><h4>太空里的新节日</h4><p>脱离地球后，人类如何重建仪式与归属感。</p><div class="cmeta"><div><b>2050</b>明日头条</div><div><b>装置+影像</b>成果形态</div></div></div></div>
+      <div class="ccard"><div class="cimg" data-bg="img/case3.jpg"><span class="cbadge">赛道 · 时间重构</span></div><div class="cbody"><div class="ctag">时间重构 · 情感连接</div><h4>跨越光年的思念</h4><p>当通讯有延迟，情感如何被重新设计与承载。</p><div class="cmeta"><div><b>2060</b>明日头条</div><div><b>物件+仪式</b>成果形态</div></div></div></div>
     </div>
     <p class="sub anim">它们都从一个小小的「未来信号」开始——你的起点，和他们完全一样。</p>
   </div>`});

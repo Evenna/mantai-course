@@ -216,6 +216,88 @@ h3{font-size:2vw;font-weight:600;line-height:1.25;margin-bottom:.8vw}
   width:4vh;height:4vh;border-radius:50%;cursor:pointer;font-size:1.6vh;transition:.2s}
 .nav button:hover{background:var(--pink);color:#fff;border-color:var(--pink)}
 .hint{position:fixed;bottom:7vh;left:50%;transform:translateX(-50%);z-index:50;font-size:1.3vh;color:var(--ink3);opacity:.7}
+/* ===== 新增：更丰富的版面组件 ===== */
+/* 封面元信息行 */
+.metarow{display:flex;flex-wrap:wrap;gap:.7vw;margin-top:2vw}
+.metarow .chip{display:inline-flex;align-items:center;gap:.5vw;font-size:1vw;font-weight:600;color:var(--ink2);
+  padding:.55vw 1.1vw;border:1px solid var(--hair);border-radius:100px;background:var(--card);backdrop-filter:blur(10px)}
+.metarow .chip .ico{width:1.1em;height:1.1em;color:var(--green)}
+.metarow .chip b{color:var(--ink);font-weight:700}
+/* 章节页：右侧「本章你会拿到」清单 */
+.chapter.rich{display:grid;grid-template-columns:1.15fr .85fr;gap:3vw;align-items:center;height:100%}
+.chapter.rich .cleft{display:flex;flex-direction:column;justify-content:center}
+.chwill{background:var(--card);backdrop-filter:blur(14px);border:1px solid var(--hair);border-radius:1.4vw;padding:1.8vw 2vw;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 18px 44px rgba(0,0,0,.45)}
+.chwill .wt{font-size:.95vw;letter-spacing:.2em;color:var(--green);font-weight:700;text-transform:uppercase;margin-bottom:1vw}
+.chwill ul{list-style:none}
+.chwill li{display:flex;gap:.9vw;align-items:flex-start;font-size:1.05vw;line-height:1.5;color:var(--ink2);margin-bottom:.95vw}
+.chwill li:last-child{margin-bottom:0}
+.chwill li .k{flex:none;width:1.5vw;height:1.5vw;border-radius:.4vw;display:flex;align-items:center;justify-content:center;margin-top:.1vw;
+  background:linear-gradient(135deg,rgba(91,155,255,.28),rgba(164,107,255,.2));border:1px solid var(--hair)}
+.chwill li .k .ico{width:.95vw;height:.95vw;color:var(--blue)}
+.chwill li b{color:var(--ink);font-weight:700}
+/* 通用高亮提示条 callout */
+.callout{display:flex;gap:1vw;align-items:flex-start;margin-top:1.1vw;padding:.95vw 1.4vw;border-radius:1vw;
+  background:rgba(52,224,206,.08);border:1px solid rgba(52,224,206,.28)}
+.callout .ci{flex:none;width:1.8vw;height:1.8vw;border-radius:.5vw;display:flex;align-items:center;justify-content:center;
+  background:rgba(52,224,206,.16);border:1px solid rgba(52,224,206,.35)}
+.callout .ci .ico{width:1.1vw;height:1.1vw;color:var(--green)}
+.callout .cx{font-size:1vw;line-height:1.55;color:var(--ink2)}
+.callout .cx b{color:var(--green);font-weight:700}
+.callout.warn{background:rgba(255,176,58,.08);border-color:rgba(255,176,58,.3)}
+.callout.warn .ci{background:rgba(255,176,58,.16);border-color:rgba(255,176,58,.38)}
+.callout.warn .ci .ico{color:var(--orange)}
+.callout.warn .cx b{color:var(--orange)}
+/* 左右分栏：左说明 + 右卡片/终端 */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:2.2vw;align-items:center;margin-top:1.2vw}
+.grid2.wide-r{grid-template-columns:.85fr 1.15fr}
+.grid2 .g2t h3{font-size:1.7vw;margin-bottom:.8vw}
+.grid2 .g2t p{font-size:1.1vw;line-height:1.6;color:var(--ink2);margin-bottom:1vw}
+/* 小徽标行 */
+.badges{display:flex;flex-wrap:wrap;gap:.6vw;margin-top:1vw}
+.badge{font-size:.85vw;font-weight:700;letter-spacing:.06em;padding:.4vw .9vw;border-radius:.5vw;
+  background:var(--bg2);border:1px solid var(--hair);color:var(--ink2)}
+.badge.b{color:var(--blue);border-color:rgba(91,155,255,.4)}
+.badge.g{color:var(--green);border-color:rgba(52,224,206,.4)}
+.badge.o{color:var(--orange);border-color:rgba(255,176,58,.4)}
+.badge.p{color:var(--purple);border-color:rgba(164,107,255,.4)}
+/* Skill 工作原理：三段流程小图 */
+.howflow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:1vw;margin-top:1.6vw}
+.howflow .hf{background:var(--card);border:1px solid var(--hair);border-radius:1vw;padding:1.3vw 1.2vw;text-align:center;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 12px 26px rgba(0,0,0,.35)}
+.howflow .hf .hfi{width:2.4vw;height:2.4vw;margin:0 auto .7vw;border-radius:.7vw;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(160deg,rgba(255,255,255,.09),rgba(255,255,255,.02));border:1px solid var(--hair)}
+.howflow .hf .hfi .ico{width:1.3vw;height:1.3vw}
+.howflow .hf:nth-child(1) .hfi .ico{color:var(--blue)}
+.howflow .hf:nth-child(3) .hfi .ico{color:var(--purple)}
+.howflow .hf:nth-child(5) .hfi .ico{color:var(--green)}
+.howflow .hf h5{font-size:1.15vw;font-weight:700;margin-bottom:.35vw}
+.howflow .hf p{font-size:.85vw;line-height:1.45;color:var(--ink2)}
+.howflow .hfa{color:var(--ink3);font-size:1.6vw;text-align:center}
+/* 案例卡：图上标签 + 底部指标 */
+.ccard .cimg{position:relative}
+.ccard .cimg .cbadge{position:absolute;top:.8vw;left:.8vw;font-size:.72vw;font-weight:700;letter-spacing:.08em;
+  padding:.35vw .7vw;border-radius:.4vw;background:rgba(11,11,16,.6);backdrop-filter:blur(6px);border:1px solid var(--hair);color:#fff}
+.ccard .cmeta{display:flex;gap:1.2vw;margin-top:.7vw;padding-top:.7vw;border-top:1px solid var(--hair)}
+.ccard .cmeta div{font-size:.78vw;color:var(--ink3)}
+.ccard .cmeta div b{display:block;font-size:1vw;color:var(--green);font-weight:800;margin-bottom:.15vw}
+/* 带标注的终端演示：右侧步骤 */
+.annot{display:grid;grid-template-columns:1.35fr .65fr;gap:1.6vw;align-items:stretch;margin-top:1.2vw}
+.annot .asteps{display:flex;flex-direction:column;gap:.8vw;justify-content:center}
+.annot .as{background:var(--card);border:1px solid var(--hair);border-radius:.9vw;padding:1vw 1.1vw;position:relative;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
+.annot .as .asn{font-size:.78vw;letter-spacing:.14em;color:var(--blue);font-weight:800;margin-bottom:.3vw}
+.annot .as h5{font-size:1vw;font-weight:700;margin-bottom:.25vw}
+.annot .as p{font-size:.82vw;line-height:1.45;color:var(--ink2)}
+/* 方法链图例 */
+.legend{display:flex;flex-wrap:wrap;gap:1.4vw;margin-top:1.2vw;justify-content:center}
+.legend span{display:inline-flex;align-items:center;gap:.5vw;font-size:.9vw;color:var(--ink3)}
+.legend span i{width:.7vw;height:.7vw;border-radius:2px;display:inline-block}
+/* 产出卡：加编号角标 */
+.skgrid.g4 .skcard .qn{position:absolute;top:1vw;right:1.1vw;font-size:1.1vw;font-weight:800;color:var(--ink3);opacity:.5}
+/* 数据统计：加副说明 */
+.stat .sd{font-size:.72vw;color:var(--ink3);margin-top:.3vw;line-height:1.3}
+
 </style>
 </head>
 <body>
