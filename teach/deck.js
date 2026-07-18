@@ -1,5 +1,9 @@
 // ===== 图片自动回退：优先 png(抠图) → jpg → svg 占位 =====
 function applyBg(el, name){
+  // 直接图片路径（含 / 或扩展名）：直接用，不做 assets/ 回退
+  if(/\//.test(name) || /\.(jpg|jpeg|png|webp|svg)$/i.test(name)){
+    el.style.backgroundImage = `url("${name}")`; return;
+  }
   const svg = `assets/${name}.svg`, jpg = `assets/${name}.jpg`, png = `assets/${name}.png`;
   el.style.backgroundImage = `url("${svg}")`;
   const pp = new Image();
@@ -52,7 +56,7 @@ const I = {
 };
 
 // ===== 1 封面 =====
-slides.push({bg:"cover", html:`
+slides.push({bg:"img/cover.jpg", bgcls:"left", html:`
   <div class="inner" style="align-items:flex-start;text-align:left">
     <div class="kicker anim">曼塔 AI × FUTURE DESIGN LAB · 实战教学</div>
     <h1 class="anim">用 Hermes Agent<br>把「未来设计」项目做出来</h1>
@@ -77,7 +81,7 @@ slides.push({bg:"", html:`
   </div>`});
 
 // ===== 3 章节 01 =====
-slides.push({bg:"", html:`
+slides.push({bg:"img/ch1.jpg", bgcls:"left", html:`
   <div class="chapter">
     <div class="cnum anim">01</div>
     <div class="clabel anim">Install & Configure</div>
@@ -118,7 +122,7 @@ slides.push({bg:"", html:`
   </div>`});
 
 // ===== 6 章节 02 =====
-slides.push({bg:"", html:`
+slides.push({bg:"img/ch2.jpg", bgcls:"left", html:`
   <div class="chapter">
     <div class="cnum anim">02</div>
     <div class="clabel anim">Base Skills</div>
@@ -173,7 +177,7 @@ slides.push({bg:"", html:`
   </div>`});
 
 // ===== 10 章节 03 =====
-slides.push({bg:"", html:`
+slides.push({bg:"img/ch3.jpg", bgcls:"left", html:`
   <div class="chapter">
     <div class="cnum anim">03</div>
     <div class="clabel anim">Work Smarter</div>
@@ -221,7 +225,7 @@ slides.push({bg:"", html:`
   </div>`});
 
 // ===== 13 章节 04 =====
-slides.push({bg:"", html:`
+slides.push({bg:"img/ch4.jpg", bgcls:"left", html:`
   <div class="chapter">
     <div class="cnum anim">04</div>
     <div class="clabel anim">Future Design Skill</div>
@@ -247,7 +251,7 @@ slides.push({bg:"", html:`
   </div>`});
 
 // ===== 15 项目引入 =====
-slides.push({bg:"", html:`
+slides.push({bg:"img/project.jpg", html:`
   <div class="inner">
     <div class="kicker anim">今天的项目 · 我们要做什么</div>
     <h2 class="anim">国际太空艺术设计共创营</h2>
@@ -321,7 +325,7 @@ slides.push({bg:"", html:`
   </div>`});
 
 // ===== 19 章节 05 =====
-slides.push({bg:"", html:`
+slides.push({bg:"img/ch5.jpg", bgcls:"left", html:`
   <div class="chapter">
     <div class="cnum anim">05</div>
     <div class="clabel anim">Showcase & Wrap-up</div>
@@ -336,9 +340,9 @@ slides.push({bg:"", html:`
     <div class="kicker anim">优秀案例 · 四大方向的代表作</div>
     <h2 class="anim">别人用同样的流程，做出了这些</h2>
     <div class="cases anim">
-      <div class="ccard"><div class="cimg" style="background:linear-gradient(135deg,#5B9BFF33,#A46BFF22),radial-gradient(circle at 30% 30%,#34E0CE22,transparent)"><span class="cemo">${I.gyro}</span></div><div class="cbody"><div class="ctag">具身体验 · 交互设计</div><h4>零重力下的身体与感知</h4><p>把失重的空间体验，转译成可交互的装置。</p></div></div>
-      <div class="ccard"><div class="cimg" style="background:linear-gradient(135deg,#FF6B8133,#FFB03A22),radial-gradient(circle at 70% 30%,#FFD45E22,transparent)"><span class="cemo">${I.flame}</span></div><div class="cbody"><div class="ctag">文化结构 · 仪式演化</div><h4>太空里的新节日</h4><p>脱离地球后，人类如何重建仪式与归属感。</p></div></div>
-      <div class="ccard"><div class="cimg" style="background:linear-gradient(135deg,#A46BFF33,#5B9BFF22),radial-gradient(circle at 50% 40%,#FF6B8122,transparent)"><span class="cemo">${I.orbit}</span></div><div class="cbody"><div class="ctag">时间重构 · 情感连接</div><h4>跨越光年的思念</h4><p>当通讯有延迟，情感如何被重新设计与承载。</p></div></div>
+      <div class="ccard"><div class="cimg" data-bg="img/case1.jpg"></div><div class="cbody"><div class="ctag">具身体验 · 交互设计</div><h4>零重力下的身体与感知</h4><p>把失重的空间体验，转译成可交互的装置。</p></div></div>
+      <div class="ccard"><div class="cimg" data-bg="img/case2.jpg"></div><div class="cbody"><div class="ctag">文化结构 · 仪式演化</div><h4>太空里的新节日</h4><p>脱离地球后，人类如何重建仪式与归属感。</p></div></div>
+      <div class="ccard"><div class="cimg" data-bg="img/case3.jpg"></div><div class="cbody"><div class="ctag">时间重构 · 情感连接</div><h4>跨越光年的思念</h4><p>当通讯有延迟，情感如何被重新设计与承载。</p></div></div>
     </div>
     <p class="sub anim">它们都从一个小小的「未来信号」开始——你的起点，和他们完全一样。</p>
   </div>`});
@@ -357,7 +361,7 @@ slides.push({bg:"", html:`
   </div>`});
 
 // ===== 22 结束页 =====
-slides.push({bg:"cover", bgcls:"end", html:`
+slides.push({bg:"img/ch5.jpg", bgcls:"end", html:`
   <div class="inner" style="text-align:center;align-items:center">
     <div class="kicker anim">FUTURE DESIGN LAB · SPACE CAMP</div>
     <h1 class="anim" style="font-size:6vw">开始你的<span class="hl-g">未来设计</span></h1>
