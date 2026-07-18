@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>曼塔 AI × Future Design · Hermes Agent 实战教学</title>
+<style>
+:root{
+  --blue:#5B9BFF; --green:#34E0CE; --orange:#FFB03A; --pink:#FF6B81; --purple:#A46BFF; --yellow:#FFD45E;
+  --bg:#0B0B10; --bg2:#16161F;
+  --ink:#F5F4F8; --ink2:rgba(245,244,248,0.72); --ink3:rgba(245,244,248,0.42);
+  --card:rgba(22,22,31,0.55);
+  --hair:rgba(255,255,255,0.1);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased}
+html,body{height:100%;background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Segoe UI",sans-serif;overflow:hidden}
+#stage{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#050507}
+#deck{position:relative;width:100vw;height:56.25vw;max-height:100vh;max-width:177.78vh;
+  background:var(--bg);overflow:hidden}
+.slide{position:absolute;inset:0;opacity:0;pointer-events:none;
+  transition:opacity .5s ease;display:flex;flex-direction:column;
+  padding:5.5% 7%;justify-content:center}
+.slide.active{opacity:1;pointer-events:auto}
+.slide.active .anim{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+.slide.active .anim:nth-child(2){animation-delay:.08s}
+.slide.active .anim:nth-child(3){animation-delay:.16s}
+.slide.active .anim:nth-child(4){animation-delay:.24s}
+.slide.active .anim:nth-child(5){animation-delay:.32s}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0}
+.bg::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(11,11,16,.62),rgba(11,11,16,.92))}
+.bg.left::after{background:linear-gradient(90deg,rgba(11,11,16,.35),rgba(11,11,16,.94) 62%)}
+.noise{position:absolute;inset:0;z-index:1;opacity:.35;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.025'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.inner{position:relative;z-index:2;width:100%;height:100%;display:flex;flex-direction:column;justify-content:center}
+/* 排版 */
+.kicker{font-size:1.15vw;letter-spacing:.32em;color:var(--blue);font-weight:600;margin-bottom:1.4vw;text-transform:uppercase}
+.kicker .dot{color:var(--green)}
+h1{font-size:5vw;font-weight:700;line-height:1.08;letter-spacing:-.01em;margin-bottom:1.6vw}
+h2{font-size:3.2vw;font-weight:700;line-height:1.14;letter-spacing:-.01em;margin-bottom:1.2vw}
+h3{font-size:2vw;font-weight:600;line-height:1.25;margin-bottom:.8vw}
+.lead{font-size:1.5vw;line-height:1.7;color:var(--ink2);max-width:64ch}
+.lead b,.lead strong{color:var(--ink);font-weight:600}
+.hl{color:var(--pink)}
+.hl-g{color:var(--green)}
+.hl-o{color:var(--orange)}
+.hl-b{color:var(--blue)}
+.hl-p{color:var(--purple)}
+.sub{font-size:1.2vw;color:var(--ink3);margin-top:1.6vw}
+.rule{width:5vw;height:4px;border-radius:4px;background:linear-gradient(90deg,var(--pink),var(--orange));margin:1.4vw 0}
+.card{background:var(--card);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid var(--hair);border-radius:1.6vw;padding:2vw 2.2vw;position:relative;overflow:hidden;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.08), 0 18px 44px rgba(0,0,0,.45)}
+.card .noise{opacity:0}
+/* ===== 章节封面/进度条章节 ===== */
+.chapter{display:flex;flex-direction:column;justify-content:center;height:100%}
+.chapter .cnum{font-size:9vw;font-weight:800;line-height:.9;
+  background:linear-gradient(120deg,var(--pink),var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:-.02em}
+.chapter .clabel{font-size:1.2vw;letter-spacing:.34em;color:var(--blue);font-weight:600;margin:1.2vw 0 .6vw;text-transform:uppercase}
+.chapter h2{font-size:3.6vw;margin-bottom:1vw}
+.chapter .ctrail{display:flex;gap:.7vw;flex-wrap:wrap;margin-top:1.6vw}
+.chapter .ctrail span{font-size:1vw;color:var(--ink3);padding:.4vw 1vw;border:1px solid var(--hair);border-radius:100px}
+.chapter .ctrail span.on{color:var(--ink);border-color:var(--pink);background:rgba(255,107,129,.12)}
+/* ===== 路线图 5 步 ===== */
+.roadmap{display:grid;grid-template-columns:repeat(5,1fr);gap:1vw;margin-top:2vw}
+.rstep{background:var(--card);backdrop-filter:blur(12px);border:1px solid var(--hair);border-radius:1.2vw;padding:1.5vw 1.2vw;text-align:left;position:relative}
+.rstep .ri{font-size:2.2vw;margin-bottom:.7vw;line-height:1}
+.rstep .rn{font-size:.9vw;letter-spacing:.16em;color:var(--blue);font-weight:700;margin-bottom:.4vw}
+.rstep .rt{font-size:1.25vw;font-weight:700;margin-bottom:.5vw}
+.rstep .rd{font-size:.9vw;line-height:1.5;color:var(--ink2)}
+.rstep.act{border-color:var(--pink);box-shadow:0 0 0 1px rgba(255,107,129,.4),0 14px 30px rgba(0,0,0,.4)}
+/* ===== 终端命令块 ===== */
+.term{background:#07070c;border:1px solid var(--hair);border-radius:1.1vw;overflow:hidden;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.06),0 18px 40px rgba(0,0,0,.5);margin-top:1.2vw}
+.term .bar{display:flex;align-items:center;gap:.5vw;padding:.8vw 1.2vw;background:rgba(255,255,255,.04);border-bottom:1px solid var(--hair)}
+.term .bar i{width:.8vw;height:.8vw;border-radius:50%;display:inline-block}
+.term .bar .r{background:#ff5f57}.term .bar .y{background:#febc2e}.term .bar .g{background:#28c840}
+.term .bar .ttl{margin-left:.8vw;font-size:.9vw;color:var(--ink3);font-family:ui-monospace,monospace}
+.term pre{padding:1.3vw 1.5vw;font-family:ui-monospace,"SF Mono",monospace;font-size:1.02vw;line-height:1.75;color:var(--ink);white-space:pre-wrap;word-break:break-all}
+.term .cmt{color:var(--ink3)}
+.term .cmd{color:var(--green)}
+.term .out{color:var(--ink2)}
+.term .prm{color:var(--pink)}
+/* ===== 步骤条（左编号右说明） ===== */
+.rows{display:flex;flex-direction:column;gap:1vw;margin-top:1.4vw}
+.row{display:flex;gap:1.4vw;align-items:flex-start;background:var(--card);border:1px solid var(--hair);border-radius:1.2vw;padding:1.4vw 1.6vw;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.07),0 12px 26px rgba(0,0,0,.35)}
+.row .rn{flex:none;width:2.8vw;height:2.8vw;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:1.4vw;font-weight:800;color:#fff;background:linear-gradient(135deg,var(--pink),var(--orange))}
+.row .rb h4{font-size:1.4vw;font-weight:700;margin-bottom:.35vw}
+.row .rb p{font-size:1.08vw;line-height:1.55;color:var(--ink2)}
+.row .rb code{background:var(--bg2);border-radius:.4vw;padding:.1vw .55vw;font-size:.95vw;color:var(--green);font-family:ui-monospace,monospace}
+/* ===== skill 卡墙 2×2 / 4 ===== */
+.skgrid{display:grid;grid-template-columns:1fr 1fr;gap:1.3vw;margin-top:1.5vw}
+.skgrid.g4{grid-template-columns:repeat(4,1fr)}
+.skcard{background:var(--card);backdrop-filter:blur(12px);border:1px solid var(--hair);border-radius:1.3vw;padding:1.5vw 1.6vw;text-align:left;position:relative;overflow:hidden;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.07),0 14px 30px rgba(0,0,0,.4)}
+.skcard .skic{font-size:2.1vw;margin-bottom:.7vw;line-height:1}
+.skcard .sktag{font-size:.82vw;letter-spacing:.14em;font-weight:700;color:var(--blue);margin-bottom:.4vw;text-transform:uppercase}
+.skcard h4{font-size:1.4vw;font-weight:700;margin-bottom:.5vw}
+.skcard p{font-size:1vw;line-height:1.55;color:var(--ink2)}
+.skcard .ex{margin-top:.8vw;font-size:.9vw;color:var(--green);font-family:ui-monospace,monospace;
+  background:#07070c;border:1px solid var(--hair);border-radius:.6vw;padding:.6vw .8vw;line-height:1.5}
+.skgrid.g4 .skcard{padding:1.3vw 1.2vw}
+.skgrid.g4 .skcard .skic{font-size:1.8vw}
+.skgrid.g4 .skcard h4{font-size:1.15vw}
+.skgrid.g4 .skcard p{font-size:.86vw;line-height:1.45}
+/* ===== 方法链 6 步（future design 方法） ===== */
+.chain{display:flex;align-items:stretch;gap:.5vw;margin-top:1.8vw;flex-wrap:nowrap}
+.clink{flex:1;background:var(--card);border:1px solid var(--hair);border-radius:1vw;padding:1.2vw .9vw;text-align:center;position:relative}
+.clink .cst{font-size:.82vw;letter-spacing:.1em;color:var(--blue);font-weight:700;margin-bottom:.4vw}
+.clink .ctt{font-size:1.05vw;font-weight:700;line-height:1.25;margin-bottom:.35vw}
+.clink .cdd{font-size:.78vw;line-height:1.4;color:var(--ink2)}
+.carr{display:flex;align-items:center;color:var(--ink3);font-size:1.4vw;flex:none}
+/* ===== 两列对照 ===== */
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:1.8vw;margin-top:1.5vw}
+.vs .col{padding:1.8vw 2vw;border-radius:1.4vw}
+.vs .pain{background:rgba(255,159,28,.09);border:1px solid rgba(255,159,28,.28)}
+.vs .fix{background:rgba(46,196,182,.1);border:1px solid rgba(46,196,182,.3)}
+.vs .col h4{font-size:1.3vw;margin-bottom:1.2vw;font-weight:600}
+.vs .pain h4{color:var(--orange)} .vs .fix h4{color:var(--green)}
+.vs li{list-style:none;font-size:1.12vw;line-height:1.6;color:var(--ink2);margin-bottom:.85vw;padding-left:1.6vw;position:relative}
+.vs li::before{position:absolute;left:0;top:0}
+.vs .pain li::before{content:"✕";color:var(--orange);opacity:.7}
+.vs .fix li::before{content:"✓";color:var(--green)}
+.vs li b{color:var(--ink);font-weight:600}
+/* ===== 功能卡网格 ===== */
+.feats{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2vw;margin-top:1.6vw}
+.feat{background:var(--card);backdrop-filter:blur(12px);border:1px solid var(--hair);border-radius:1.2vw;padding:1.4vw 1.3vw;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.07),0 14px 30px rgba(0,0,0,.4);text-align:left}
+.feat .ic{font-size:1.9vw;margin-bottom:.6vw;line-height:1}
+.feat .ft{font-size:1.22vw;font-weight:700;margin-bottom:.4vw}
+.feat .fd{font-size:.9vw;line-height:1.5;color:var(--ink2)}
+/* ===== 项目文件夹树 ===== */
+.split2{display:grid;grid-template-columns:1.05fr .95fr;gap:2.4vw;align-items:center;margin-top:1vw}
+.tree{background:#07070c;border:1px solid var(--hair);border-radius:1.1vw;padding:1.5vw 1.8vw;
+  font-family:ui-monospace,monospace;font-size:1.02vw;line-height:1.85;color:var(--ink2);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.06),0 18px 40px rgba(0,0,0,.5)}
+.tree .dir{color:var(--blue);font-weight:700}
+.tree .f{color:var(--ink2)}
+.tree .c{color:var(--green)}
+/* ===== 案例卡 ===== */
+.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4vw;margin-top:1.6vw}
+.ccard{background:var(--card);border:1px solid var(--hair);border-radius:1.3vw;overflow:hidden;text-align:left;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.07),0 14px 30px rgba(0,0,0,.4)}
+.ccard .cimg{width:100%;aspect-ratio:16/10;background-size:cover;background-position:center;background-color:var(--bg2);border-bottom:1px solid var(--hair)}
+.ccard .cbody{padding:1.2vw 1.4vw}
+.ccard .ctag{font-size:.82vw;letter-spacing:.12em;color:var(--blue);font-weight:700;margin-bottom:.4vw;text-transform:uppercase}
+.ccard h4{font-size:1.3vw;font-weight:700;margin-bottom:.5vw}
+.ccard p{font-size:.92vw;line-height:1.5;color:var(--ink2)}
+.ccard .cimg{display:flex;align-items:center;justify-content:center}
+.ccard .cemo{font-size:3.2vw;opacity:.9;filter:drop-shadow(0 4px 12px rgba(0,0,0,.4))}
+/* ===== 大 CTA ===== */
+.bullets{margin-top:1.4vw}
+.bullets li{list-style:none;font-size:1.3vw;line-height:1.55;color:var(--ink);margin-bottom:1vw;padding-left:2.2vw;position:relative}
+.bullets li::before{content:"";position:absolute;left:0;top:.5vw;width:1.1vw;height:1.1vw;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--orange))}
+.bullets li b{font-weight:600}
+/* ===== 数据统计 ===== */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2vw;margin-top:1.6vw}
+.stat{background:var(--card);backdrop-filter:blur(12px);border:1px solid var(--hair);border-radius:1.2vw;padding:1.4vw 1vw;text-align:center;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.07),0 12px 26px rgba(0,0,0,.35)}
+.stat .num{font-size:3vw;font-weight:800;line-height:1;background:linear-gradient(120deg,var(--pink),var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat .lab{font-size:.95vw;color:var(--ink2);margin-top:.6vw;letter-spacing:.05em}
+/* ===== 四阶段流程 ===== */
+.phases{display:flex;align-items:center;flex-wrap:wrap;gap:.6vw;margin-top:1.8vw}
+.phases .ph{font-size:1.05vw;font-weight:600;color:var(--ink);padding:.6vw 1.2vw;border:1px solid var(--hair);border-radius:100px;background:var(--card)}
+.phases .arr{color:var(--ink3);font-size:1.2vw}
+/* ===== 回顾三步 ===== */
+.recap{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4vw;margin-top:1.6vw}
+.rc{display:flex;gap:1vw;align-items:flex-start;background:var(--card);border:1px solid var(--hair);border-radius:1.2vw;padding:1.4vw 1.4vw;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.07),0 12px 26px rgba(0,0,0,.35)}
+.rc .rcn{flex:none;width:2.6vw;height:2.6vw;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:1.3vw;font-weight:800;color:#fff;background:linear-gradient(135deg,var(--pink),var(--orange))}
+.rc .rcb h4{font-size:1.25vw;font-weight:700;margin-bottom:.35vw}
+.rc .rcb p{font-size:.95vw;line-height:1.5;color:var(--ink2)}
+/* ===== 加长终端 ===== */
+.term.tall pre{font-size:.95vw;line-height:1.7}
+/* ===== 结束页背景 ===== */
+.bg.end::after{background:radial-gradient(circle at 50% 45%,rgba(52,224,206,.16),transparent 55%),linear-gradient(180deg,rgba(11,11,16,.7),rgba(11,11,16,.95))}
+/* 页码 & 进度 */
+.pager{position:fixed;bottom:2.2vh;right:3vw;z-index:50;font-size:1.4vh;color:var(--ink3);letter-spacing:.1em;font-family:ui-monospace,monospace}
+.progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--pink),var(--orange));z-index:60;transition:width .4s ease}
+.brand{position:fixed;top:2.6vh;left:3vw;z-index:50;font-size:1.5vh;letter-spacing:.28em;color:var(--ink3);font-weight:700}
+.nav{position:fixed;bottom:2vh;left:50%;transform:translateX(-50%);z-index:50;display:flex;gap:1vw}
+.nav button{background:#fff;border:1px solid var(--hair);color:var(--ink2);box-shadow:0 4px 12px rgba(29,27,46,.08);
+  width:4vh;height:4vh;border-radius:50%;cursor:pointer;font-size:1.6vh;transition:.2s}
+.nav button:hover{background:var(--pink);color:#fff;border-color:var(--pink)}
+.hint{position:fixed;bottom:7vh;left:50%;transform:translateX(-50%);z-index:50;font-size:1.3vh;color:var(--ink3);opacity:.7}
+</style>
+</head>
+<body>
+<div class="progress" id="prog"></div>
+<div class="brand">曼塔 AI × FUTURE DESIGN</div>
+<div id="stage"><div id="deck"></div></div>
+<div class="pager" id="pager">01 / 01</div>
+<div class="nav"><button id="prev">‹</button><button id="next">›</button></div>
+<div class="hint">← → 或 空格 翻页 · F 全屏</div>
+<script src="deck.js"></script>
+</body>
+</html>
