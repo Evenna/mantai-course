@@ -10,6 +10,47 @@ function applyBg(el, name){
 
 const slides = [];
 
+// ===== 图标库：统一 24×24 线性描边，继承 currentColor =====
+function ic(p, o){ o=o||{}; return `<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${o.w||1.6}" stroke-linecap="round" stroke-linejoin="round" ${o.fill?'':''}>${p}</svg>`; }
+const I = {
+  // 安装 · 下载盒
+  install: ic('<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/>'),
+  // 拼图 · Skill
+  puzzle: ic('<path d="M10 4a2 2 0 1 1 4 0h4v4a2 2 0 1 1 0 4v4h-4a2 2 0 1 0-4 0H6v-4a2 2 0 1 1 0-4V4z"/>'),
+  // 闪电 · 提效
+  bolt: ic('<path d="M13 2 4 14h7l-1 8 9-12h-7z"/>'),
+  // 火箭 · Future Design
+  rocket: ic('<path d="M12 2c3 1 6 4 6 9a10 10 0 0 1-2 6l-4 1-4-1a10 10 0 0 1-2-6c0-5 3-8 6-9z"/><circle cx="12" cy="9" r="1.8"/><path d="M8 17c-1.5.5-2.5 2-2.5 4 2 0 3.5-1 4-2.5M16 17c1.5.5 2.5 2 2.5 4-2 0-3.5-1-4-2.5"/>'),
+  // 奖杯 · 案例
+  trophy: ic('<path d="M7 4h10v4a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/><path d="M10 13.5v3M14 13.5v3M8 20h8M9 20v-1.5h6V20"/>'),
+  // 小红书 · 书本
+  book: ic('<path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19a2 2 0 0 1 2-2h13"/><path d="M9 7h6M9 10h4"/>'),
+  // 抖音 · 影片
+  film: ic('<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 4v16M17 4v16M3 9h4M17 9h4M3 15h4M17 15h4"/>'),
+  // 搜索
+  search: ic('<circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/>'),
+  // 多模态 · 图像+火花
+  image: ic('<rect x="3" y="4" width="14" height="14" rx="2"/><circle cx="8" cy="9" r="1.6"/><path d="M3 15l4-3 4 3 3-2 3 2"/><path d="M19 3v4M17 5h4" stroke-width="1.4"/>'),
+  // 说话 · 沟通
+  chat: ic('<path d="M4 5h16v11H9l-4 4z"/><path d="M8 9h8M8 12h5"/>'),
+  // 记忆 · 大脑
+  brain: ic('<path d="M9 4a3 3 0 0 0-3 3 3 3 0 0 0-1 5 3 3 0 0 0 2 4 3 3 0 0 0 5 1V4.5A2.5 2.5 0 0 0 9 4z"/><path d="M15 4a3 3 0 0 1 3 3 3 3 0 0 1 1 5 3 3 0 0 1-2 4 3 3 0 0 1-5 1"/>'),
+  // 图钉 · 沉淀
+  pin: ic('<path d="M12 3l4 4-2 1 1 6-3-3-5 5v-6l-3-1 4-4z" transform="rotate(0 12 12)"/><path d="M9 15l-4 4"/>'),
+  // 信号 · 天线
+  signal: ic('<path d="M5 7a9 9 0 0 0 0 10M8 9.5a5 5 0 0 0 0 5M19 7a9 9 0 0 1 0 10M16 9.5a5 5 0 0 1 0 5"/><circle cx="12" cy="12" r="1.6"/><path d="M12 13.5V21"/>'),
+  // 卡片 · 原型卡
+  card: ic('<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 9h6M7 12h8M7 15h4"/>'),
+  // 报纸 · 明日头条
+  news: ic('<path d="M4 5h13v14H5a1 1 0 0 1-1-1z"/><path d="M17 8h3v9a2 2 0 0 1-2 2"/><path d="M7 8h6M7 11h6M7 14h4"/>'),
+  // 画框 · 概念图
+  frame: ic('<rect x="3" y="4" width="18" height="14" rx="1.5"/><path d="M3 14l5-4 4 3 3-2 6 4"/><circle cx="8.5" cy="8.5" r="1.4"/><path d="M9 21h6"/>'),
+  // 案例占位图标
+  gyro: ic('<circle cx="12" cy="12" r="8"/><ellipse cx="12" cy="12" rx="8" ry="3"/><ellipse cx="12" cy="12" rx="3" ry="8"/>', {w:1.3}),
+  flame: ic('<path d="M12 3c1 3 4 4 4 8a4 4 0 0 1-8 0c0-2 1-3 1-4 1 1 2 1 2 0 0-1.5-.5-2.5 1-4z"/>'),
+  orbit: ic('<circle cx="12" cy="12" r="2.5"/><ellipse cx="12" cy="12" rx="9" ry="4" transform="rotate(30 12 12)"/><circle cx="20" cy="8" r="1.2"/>', {w:1.3}),
+};
+
 // ===== 1 封面 =====
 slides.push({bg:"cover", html:`
   <div class="inner" style="align-items:flex-start;text-align:left">
@@ -26,11 +67,11 @@ slides.push({bg:"", html:`
     <div class="kicker anim">今天怎么走 · 5 个阶段</div>
     <h2 class="anim">从装好工具，到交出一个完整项目</h2>
     <div class="roadmap anim">
-      <div class="rstep"><div class="ri">📦</div><div class="rn">STEP 01</div><div class="rt">安装 & 配置</div><div class="rd">装好 Hermes，接上模型，第一句话就能对话。</div></div>
-      <div class="rstep"><div class="ri">🧩</div><div class="rn">STEP 02</div><div class="rt">基础 Skill</div><div class="rd">小红书 / 抖音 / 搜索 / 多模态，先把 Agent 玩起来。</div></div>
-      <div class="rstep"><div class="ri">⚡</div><div class="rn">STEP 03</div><div class="rt">用它提效</div><div class="rd">把重复的活交出去，理解 Agent 怎么帮你干活。</div></div>
-      <div class="rstep"><div class="ri">🚀</div><div class="rn">STEP 04</div><div class="rt">Future Design Skill</div><div class="rd">安装专属技能，用方法链把项目做出来。</div></div>
-      <div class="rstep"><div class="ri">🏆</div><div class="rn">STEP 05</div><div class="rt">案例 & 收尾</div><div class="rd">看优秀作品长什么样，明确你的产出。</div></div>
+      <div class="rstep"><div class="ri">${I.install}</div><div class="rn">STEP 01</div><div class="rt">安装 & 配置</div><div class="rd">装好 Hermes，接上模型，第一句话就能对话。</div></div>
+      <div class="rstep"><div class="ri">${I.puzzle}</div><div class="rn">STEP 02</div><div class="rt">基础 Skill</div><div class="rd">小红书 / 抖音 / 搜索 / 多模态，先把 Agent 玩起来。</div></div>
+      <div class="rstep"><div class="ri">${I.bolt}</div><div class="rn">STEP 03</div><div class="rt">用它提效</div><div class="rd">把重复的活交出去，理解 Agent 怎么帮你干活。</div></div>
+      <div class="rstep"><div class="ri">${I.rocket}</div><div class="rn">STEP 04</div><div class="rt">Future Design Skill</div><div class="rd">安装专属技能，用方法链把项目做出来。</div></div>
+      <div class="rstep"><div class="ri">${I.trophy}</div><div class="rn">STEP 05</div><div class="rt">案例 & 收尾</div><div class="rd">看优秀作品长什么样，明确你的产出。</div></div>
     </div>
     <p class="sub anim">先把 Agent 变成顺手的工具，再让它成为你做项目的「共创搭档」。</p>
   </div>`});
@@ -110,10 +151,10 @@ slides.push({bg:"", html:`
     <div class="kicker anim">先装这四个 · 覆盖最高频的场景</div>
     <h2 class="anim">四个基础 Skill，先把 Agent 用起来</h2>
     <div class="skgrid g4 anim">
-      <div class="skcard"><div class="skic">📕</div><div class="sktag">内容运营</div><h4>小红书 Skill</h4><p>选题、爆款标题、正文文案、配图一条龙，套账号风格直接产出。</p></div>
-      <div class="skcard"><div class="skic">🎬</div><div class="sktag">短视频</div><h4>抖音 Skill</h4><p>对标拆解、脚本分镜、口播文案，把一个选题拆成能直接拍的脚本。</p></div>
-      <div class="skcard"><div class="skic">🔍</div><div class="sktag">搜索检索</div><h4>Web Search Skill</h4><p>实时联网搜索、读取网页/公众号/链接，把资料抓回来整理成你要的样子。</p></div>
-      <div class="skcard"><div class="skic">🎨</div><div class="sktag">多模态</div><h4>多模态生成 Skill</h4><p>一句话文生图、图生视频。做海报、做封面、做概念图，素材自己产。</p></div>
+      <div class="skcard"><div class="skic">${I.book}</div><div class="sktag">内容运营</div><h4>小红书 Skill</h4><p>选题、爆款标题、正文文案、配图一条龙，套账号风格直接产出。</p></div>
+      <div class="skcard"><div class="skic">${I.film}</div><div class="sktag">短视频</div><h4>抖音 Skill</h4><p>对标拆解、脚本分镜、口播文案，把一个选题拆成能直接拍的脚本。</p></div>
+      <div class="skcard"><div class="skic">${I.search}</div><div class="sktag">搜索检索</div><h4>Web Search Skill</h4><p>实时联网搜索、读取网页/公众号/链接，把资料抓回来整理成你要的样子。</p></div>
+      <div class="skcard"><div class="skic">${I.image}</div><div class="sktag">多模态</div><h4>多模态生成 Skill</h4><p>一句话文生图、图生视频。做海报、做封面、做概念图，素材自己产。</p></div>
     </div>
     <p class="sub anim">这四个装好，你就能感受到：Agent 不只是聊天，它能<b>真的动手帮你产出东西</b>。</p>
   </div>`});
@@ -171,10 +212,10 @@ slides.push({bg:"", html:`
     <div class="kicker anim">四个动作 · 让 Agent 越用越顺手</div>
     <h2 class="anim">把它变成真正帮你干活的助手</h2>
     <div class="feats anim">
-      <div class="feat"><div class="ic">🗣️</div><div class="ft">把任务说清楚</div><div class="fd">目标、要求、格式讲明白，Agent 输出就稳、就少返工。</div></div>
-      <div class="feat"><div class="ic">🧩</div><div class="ft">组合多个 Skill</div><div class="fd">搜索 + 文案 + 生图串起来，一条链子跑完一整件事。</div></div>
-      <div class="feat"><div class="ic">🧠</div><div class="ft">让它记住你</div><div class="fd">偏好、项目背景记进记忆，不用每次重头交代。</div></div>
-      <div class="feat"><div class="ic">📌</div><div class="ft">沉淀成 Skill</div><div class="fd">跑通的流程存下来，下次同类活直接一键复用。</div></div>
+      <div class="feat"><div class="ic">${I.chat}</div><div class="ft">把任务说清楚</div><div class="fd">目标、要求、格式讲明白，Agent 输出就稳、就少返工。</div></div>
+      <div class="feat"><div class="ic">${I.puzzle}</div><div class="ft">组合多个 Skill</div><div class="fd">搜索 + 文案 + 生图串起来，一条链子跑完一整件事。</div></div>
+      <div class="feat"><div class="ic">${I.brain}</div><div class="ft">让它记住你</div><div class="fd">偏好、项目背景记进记忆，不用每次重头交代。</div></div>
+      <div class="feat"><div class="ic">${I.pin}</div><div class="ft">沉淀成 Skill</div><div class="fd">跑通的流程存下来，下次同类活直接一键复用。</div></div>
     </div>
     <p class="sub anim">掌握了提效，接下来我们就把这套本事，用到今天真正的主角——<b>Future Design 项目</b>上。</p>
   </div>`});
@@ -271,10 +312,10 @@ slides.push({bg:"", html:`
     <div class="kicker anim">这节课结束时 · 你手里会有</div>
     <h2 class="anim">一份完整、能拿去展览的设计提案</h2>
     <div class="skgrid g4 anim">
-      <div class="skcard"><div class="skic">📡</div><h4>未来信号 & 解读</h4><p>一份结构化的趋势判断，说清「为什么是它」。</p></div>
-      <div class="skcard"><div class="skic">🃏</div><h4>原型卡 Prototyping Card</h4><p>你的核心设计概念，一张卡讲清楚。</p></div>
-      <div class="skcard"><div class="skic">📰</div><h4>明日头条</h4><p>一句话把观众带进你设想的未来场景。</p></div>
-      <div class="skcard"><div class="skic">🖼️</div><h4>概念图 & 视频</h4><p>AI 生成的视觉素材，提案立刻有画面。</p></div>
+      <div class="skcard"><div class="skic">${I.signal}</div><h4>未来信号 & 解读</h4><p>一份结构化的趋势判断，说清「为什么是它」。</p></div>
+      <div class="skcard"><div class="skic">${I.card}</div><h4>原型卡 Prototyping Card</h4><p>你的核心设计概念，一张卡讲清楚。</p></div>
+      <div class="skcard"><div class="skic">${I.news}</div><h4>明日头条</h4><p>一句话把观众带进你设想的未来场景。</p></div>
+      <div class="skcard"><div class="skic">${I.frame}</div><h4>概念图 & 视频</h4><p>AI 生成的视觉素材，提案立刻有画面。</p></div>
     </div>
     <p class="sub anim">从一个模糊的想法，到一套能展示、能答辩的完整成果——今天就能做出来。</p>
   </div>`});
@@ -295,9 +336,9 @@ slides.push({bg:"", html:`
     <div class="kicker anim">优秀案例 · 四大方向的代表作</div>
     <h2 class="anim">别人用同样的流程，做出了这些</h2>
     <div class="cases anim">
-      <div class="ccard"><div class="cimg" style="background:linear-gradient(135deg,#5B9BFF33,#A46BFF22),radial-gradient(circle at 30% 30%,#34E0CE22,transparent)"><span class="cemo">🌀</span></div><div class="cbody"><div class="ctag">具身体验 · 交互设计</div><h4>零重力下的身体与感知</h4><p>把失重的空间体验，转译成可交互的装置。</p></div></div>
-      <div class="ccard"><div class="cimg" style="background:linear-gradient(135deg,#FF6B8133,#FFB03A22),radial-gradient(circle at 70% 30%,#FFD45E22,transparent)"><span class="cemo">🕯️</span></div><div class="cbody"><div class="ctag">文化结构 · 仪式演化</div><h4>太空里的新节日</h4><p>脱离地球后，人类如何重建仪式与归属感。</p></div></div>
-      <div class="ccard"><div class="cimg" style="background:linear-gradient(135deg,#A46BFF33,#5B9BFF22),radial-gradient(circle at 50% 40%,#FF6B8122,transparent)"><span class="cemo">💫</span></div><div class="cbody"><div class="ctag">时间重构 · 情感连接</div><h4>跨越光年的思念</h4><p>当通讯有延迟，情感如何被重新设计与承载。</p></div></div>
+      <div class="ccard"><div class="cimg" style="background:linear-gradient(135deg,#5B9BFF33,#A46BFF22),radial-gradient(circle at 30% 30%,#34E0CE22,transparent)"><span class="cemo">${I.gyro}</span></div><div class="cbody"><div class="ctag">具身体验 · 交互设计</div><h4>零重力下的身体与感知</h4><p>把失重的空间体验，转译成可交互的装置。</p></div></div>
+      <div class="ccard"><div class="cimg" style="background:linear-gradient(135deg,#FF6B8133,#FFB03A22),radial-gradient(circle at 70% 30%,#FFD45E22,transparent)"><span class="cemo">${I.flame}</span></div><div class="cbody"><div class="ctag">文化结构 · 仪式演化</div><h4>太空里的新节日</h4><p>脱离地球后，人类如何重建仪式与归属感。</p></div></div>
+      <div class="ccard"><div class="cimg" style="background:linear-gradient(135deg,#A46BFF33,#5B9BFF22),radial-gradient(circle at 50% 40%,#FF6B8122,transparent)"><span class="cemo">${I.orbit}</span></div><div class="cbody"><div class="ctag">时间重构 · 情感连接</div><h4>跨越光年的思念</h4><p>当通讯有延迟，情感如何被重新设计与承载。</p></div></div>
     </div>
     <p class="sub anim">它们都从一个小小的「未来信号」开始——你的起点，和他们完全一样。</p>
   </div>`});

@@ -63,6 +63,34 @@ h3{font-size:2vw;font-weight:600;line-height:1.25;margin-bottom:.8vw}
 .chapter .ctrail{display:flex;gap:.7vw;flex-wrap:wrap;margin-top:1.6vw}
 .chapter .ctrail span{font-size:1vw;color:var(--ink3);padding:.4vw 1vw;border:1px solid var(--hair);border-radius:100px}
 .chapter .ctrail span.on{color:var(--ink);border-color:var(--pink);background:rgba(255,107,129,.12)}
+/* ===== 图标：统一线性 SVG，1em 随字号缩放 ===== */
+.ico{width:1em;height:1em;display:block;stroke-width:1.6;overflow:visible}
+/* 图标磁贴：精致的圆角容器 + 微渐变 + 内高光 */
+.rstep .ri,.skcard .skic,.feat .ic{
+  display:inline-flex;align-items:center;justify-content:center;
+  border-radius:.7em;background:linear-gradient(160deg,rgba(255,255,255,.09),rgba(255,255,255,.02));
+  border:1px solid var(--hair);box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 6px 16px rgba(0,0,0,.28);
+  padding:.42em;box-sizing:content-box}
+.rstep .ri .ico,.skcard .skic .ico,.feat .ic .ico{width:1em;height:1em}
+/* 路线图 5 步 — 依次撞色 */
+.roadmap .rstep:nth-child(1) .ri{color:var(--blue)}
+.roadmap .rstep:nth-child(2) .ri{color:var(--green)}
+.roadmap .rstep:nth-child(3) .ri{color:var(--yellow)}
+.roadmap .rstep:nth-child(4) .ri{color:var(--purple)}
+.roadmap .rstep:nth-child(5) .ri{color:var(--orange)}
+/* 基础 Skill 墙 — 四色 */
+.skgrid.g4 .skcard:nth-child(1) .skic{color:var(--pink)}
+.skgrid.g4 .skcard:nth-child(2) .skic{color:var(--purple)}
+.skgrid.g4 .skcard:nth-child(3) .skic{color:var(--blue)}
+.skgrid.g4 .skcard:nth-child(4) .skic{color:var(--green)}
+/* 提效四动作 */
+.feats .feat:nth-child(1) .ic{color:var(--blue)}
+.feats .feat:nth-child(2) .ic{color:var(--green)}
+.feats .feat:nth-child(3) .ic{color:var(--purple)}
+.feats .feat:nth-child(4) .ic{color:var(--orange)}
+/* 案例卡图标 — 大号居中，无磁贴 */
+.ccard .cemo .ico{width:1em;height:1em;color:#fff;opacity:.92;filter:drop-shadow(0 4px 12px rgba(0,0,0,.4))}
+
 /* ===== 路线图 5 步 ===== */
 .roadmap{display:grid;grid-template-columns:repeat(5,1fr);gap:1vw;margin-top:2vw}
 .rstep{background:var(--card);backdrop-filter:blur(12px);border:1px solid var(--hair);border-radius:1.2vw;padding:1.5vw 1.2vw;text-align:left;position:relative}
