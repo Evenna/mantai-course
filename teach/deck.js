@@ -89,10 +89,12 @@ slides.push({bg:"", html:`
     <div class="kicker anim">课程来源 · 曼塔 AI 体验课</div>
     <h2 class="anim">我们从这里出发</h2>
     <div class="sitegrid anim">
-      <div class="shot win" style="height:34vh">
-        <img src="img/hero-mantai.jpg" alt="曼塔 AI 体验课首页">
-        <div class="glow"></div>
-        <div class="tag">${I.globe}mantai.me</div>
+      <div class="shotwrap">
+        <div class="shot win tilt" style="height:34vh">
+          <img src="img/hero-mantai.jpg" alt="曼塔 AI 体验课首页">
+          <div class="glow"></div>
+          <div class="tag"><span class="dot"></span>mantai.me</div>
+        </div>
       </div>
       <div class="sinfo">
         <h3>让 AI Agent 真正上岗</h3>
@@ -358,10 +360,12 @@ slides.push({bg:"", html:`
     <h2 class="anim">安装 Future Design Skill</h2>
     <p class="lead anim">和基础 Skill 一样一句话就能装。<b>注意：这套技能全程用 Hermes，不再教 Codex</b>——和前面的操作完全一致，无缝衔接。</p>
     <div class="sitegrid flip anim">
-      <div class="shot win" style="height:32vh">
-        <img src="img/hero-futuredesign.jpg" alt="Future Design 技能安装页">
-        <div class="glow"></div>
-        <div class="tag">${I.globe}future-design-lab.github.io</div>
+      <div class="shotwrap">
+        <div class="shot win tiltR" style="height:32vh">
+          <img src="img/hero-futuredesign.jpg" alt="Future Design 技能安装页">
+          <div class="glow"></div>
+          <div class="tag"><span class="dot"></span>future-design-lab.github.io</div>
+        </div>
       </div>
       <div class="sinfo">
         <div class="term" style="margin:0">

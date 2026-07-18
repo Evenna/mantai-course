@@ -297,23 +297,34 @@ h3{font-size:2vw;font-weight:600;line-height:1.25;margin-bottom:.8vw}
 .skgrid.g4 .skcard .qn{position:absolute;top:1vw;right:1.1vw;font-size:1.1vw;font-weight:800;color:var(--ink3);opacity:.5}
 /* 数据统计：加副说明 */
 .stat .sd{font-size:.72vw;color:var(--ink3);margin-top:.3vw;line-height:1.3}
-/* ===== 网站截图：精致画框（无浏览器 chrome） ===== */
-.shot{position:relative;border-radius:1.1vw;overflow:hidden;
-  background:linear-gradient(135deg,rgba(91,155,255,.5),rgba(52,224,206,.25) 45%,rgba(164,107,255,.4));
-  padding:1.5px;box-shadow:0 30px 70px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.05)}
-.shot::before{content:"";position:absolute;inset:0;border-radius:1.1vw;padding:1.5px;
-  background:linear-gradient(135deg,rgba(255,255,255,.35),rgba(255,255,255,0) 40%);
-  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
-  -webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;z-index:2}
-.shot img{display:block;width:100%;border-radius:1vw;object-fit:cover;object-position:top center}
-.shot .glow{position:absolute;inset:0;border-radius:1vw;pointer-events:none;z-index:1;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.18),inset 0 -40px 60px -40px rgba(0,0,0,.5)}
-.shot .tag{position:absolute;left:1vw;bottom:1vw;z-index:3;display:inline-flex;align-items:center;gap:.4vw;
-  font-size:.78vw;font-weight:600;color:#fff;background:rgba(11,11,16,.72);backdrop-filter:blur(8px);
-  border:1px solid rgba(255,255,255,.14);border-radius:2vw;padding:.4vw .9vw}
-.shot .tag .ico{width:.95vw;height:.95vw;color:var(--green)}
+/* ===== 网站截图：Linear/Framer 风悬浮展示（无边框、氛围辉光、软投影） ===== */
+/* 承载容器：负责氛围辉光 + 透视舞台，不裁切内部 */
+.shotwrap{position:relative;perspective:2200px;padding:1.6vw 0}
+/* 图片背后的大面积彩色氛围辉光——从图片后方弥散出来 */
+.shotwrap::before{content:"";position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);
+  width:88%;height:78%;border-radius:50%;z-index:0;pointer-events:none;
+  background:radial-gradient(45% 50% at 50% 50%,rgba(91,155,255,.42),rgba(164,107,255,.26) 55%,transparent 75%);
+  filter:blur(46px);opacity:.9}
+/* 截图本体：纯净，无彩色描边，仅一根发丝级白边 + 大面积柔投影 */
+.shot{position:relative;z-index:1;border-radius:.9vw;overflow:hidden;
+  border:1px solid rgba(255,255,255,.09);background:#0e0e15;
+  box-shadow:0 40px 90px -30px rgba(0,0,0,.75),0 12px 30px -12px rgba(0,0,0,.5),
+    inset 0 1px 0 rgba(255,255,255,.14)}
+.shot img{display:block;width:100%;border-radius:.9vw;object-fit:cover;object-position:top center}
+/* 顶部一道极淡高光，制造"玻璃屏"质感（覆盖在图上，不描边） */
+.shot .glow{position:absolute;inset:0;border-radius:.9vw;pointer-events:none;z-index:2;
+  background:linear-gradient(180deg,rgba(255,255,255,.08),transparent 14%);
+  box-shadow:inset 0 -60px 80px -60px rgba(0,0,0,.55)}
+/* 3D 透视微倾——大图 hero 用，制造"立体展台"感 */
+.shot.tilt{transform:rotateX(4deg) rotateY(-7deg) rotateZ(.5deg);transform-style:preserve-3d}
+.shot.tiltR{transform:rotateX(4deg) rotateY(7deg) rotateZ(-.5deg);transform-style:preserve-3d}
+/* 网址胶囊：浮在图右下，毛玻璃 */
+.shot .tag{position:absolute;right:.9vw;bottom:.9vw;z-index:3;display:inline-flex;align-items:center;gap:.4vw;
+  font-size:.76vw;font-weight:600;color:#fff;letter-spacing:.02em;background:rgba(11,11,16,.62);backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.12);border-radius:2vw;padding:.38vw .85vw;box-shadow:0 6px 18px rgba(0,0,0,.4)}
+.shot .tag .ico{width:.9vw;height:.9vw;color:var(--green)}
+.shot .tag .dot{width:.42vw;height:.42vw;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green)}
 /* 长图裁窗：完整比例塞入固定视窗（contain，不裁切） */
-.shot.win{display:flex;background:linear-gradient(135deg,rgba(91,155,255,.45),rgba(164,107,255,.4))}
 .shot.win img{width:100%;height:100%;object-fit:contain;background:#0e0e15}
 /* 截图 + 说明左右分栏 */
 .sitegrid{display:grid;grid-template-columns:1.15fr .85fr;gap:2.4vw;align-items:center;margin-top:1.4vw}
@@ -323,7 +334,7 @@ h3{font-size:2vw;font-weight:600;line-height:1.25;margin-bottom:.8vw}
 /* 双截图并排画廊 —— 完整比例不裁切 */
 .gallery{display:grid;grid-template-columns:1fr 1fr;gap:1.8vw;margin-top:1.3vw;align-items:start}
 .gallery.g3{grid-template-columns:1fr 1fr 1fr}
-.gallery .shot{background:linear-gradient(135deg,rgba(91,155,255,.4),rgba(164,107,255,.35))}
+.gallery .shot{background:#0e0e15}
 .gallery .shot img{width:100%;height:auto;max-height:30vh;object-fit:contain;background:#0e0e15}
 .gallery .cap{margin-top:.7vw;font-size:.92vw;color:var(--ink2);text-align:center;line-height:1.4}
 .gallery .cap b{color:var(--ink)}
