@@ -83,6 +83,32 @@ slides.push({bg:"img/cover.jpg", bgcls:"left", html:`
     </div>
   </div>`});
 
+// ===== 1.5 这就是我们的体验课（mantai.me） =====
+slides.push({bg:"", html:`
+  <div class="inner">
+    <div class="kicker anim">课程来源 · 曼塔 AI 体验课</div>
+    <h2 class="anim">我们从这里出发</h2>
+    <div class="sitegrid anim">
+      <div class="browser">
+        <div class="bchrome"><div class="bdots"><i></i><i></i><i></i></div>
+          <div class="burl">${I.globe}mantai.me</div></div>
+        <img class="bshot" src="img/site-mantai.jpg" alt="曼塔 AI 体验课首页" style="height:30vh">
+      </div>
+      <div class="sinfo">
+        <h3>让 AI Agent 真正上岗</h3>
+        <p>曼塔体验课不丢一段视频，而是<b>带你从安装到做出成果</b>——先亲手跑通第一个项目，再决定要不要深入。</p>
+        <div class="chwill" style="margin:0">
+          <div class="wt">今天沿用同一套路</div>
+          <ul>
+            <li><span class="k">${I.install}</span><div>装好 <b>Hermes Agent</b>，接上模型</div></li>
+            <li><span class="k">${I.puzzle}</span><div>装几个<b>基础 Skill</b> 把它玩起来</div></li>
+            <li><span class="k">${I.rocket}</span><div>用 <b>Future Design Skill</b> 做真实项目</div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>`});
+
 // ===== 2 今天的路线图 =====
 slides.push({bg:"", html:`
   <div class="inner">
@@ -315,6 +341,11 @@ slides.push({bg:"", html:`
 <span class="prm">你 ›</span> <span class="cmd">帮我安装 future design 的 skill</span>
 <span class="out">✓ 已安装 future-design 技能包。现在我能带你走完
   未来信号 → 解读 → 原型卡 → 明日头条 → 回溯路线图 的完整设计流程。</span></pre>
+    </div>
+    <div class="browser anim" style="margin-top:1vw">
+      <div class="bchrome"><div class="bdots"><i></i><i></i><i></i></div>
+        <div class="burl">${I.globe}future-design-lab.github.io/tools/skill-install.html</div></div>
+      <img class="bshot" src="img/site-futuredesign.jpg" alt="Future Design 技能安装页" style="height:22vh">
     </div>
     <div class="callout anim"><div class="ci">${I.check}</div><div class="cx">装完之后，Agent 就变成了你的<b>「未来设计共创搭档」</b>——和前面的操作零切换，全程陪你把项目做完。</div></div>
   </div>`});

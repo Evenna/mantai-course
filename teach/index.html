@@ -297,6 +297,23 @@ h3{font-size:2vw;font-weight:600;line-height:1.25;margin-bottom:.8vw}
 .skgrid.g4 .skcard .qn{position:absolute;top:1vw;right:1.1vw;font-size:1.1vw;font-weight:800;color:var(--ink3);opacity:.5}
 /* 数据统计：加副说明 */
 .stat .sd{font-size:.72vw;color:var(--ink3);margin-top:.3vw;line-height:1.3}
+/* 浏览器窗口 mockup：给网站截图套真实窗口 chrome */
+.browser{border-radius:1vw;overflow:hidden;border:1px solid var(--hair);background:var(--bg2);
+  box-shadow:0 26px 60px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.08)}
+.browser .bchrome{display:flex;align-items:center;gap:.7vw;padding:.7vw 1vw;background:rgba(255,255,255,.04);border-bottom:1px solid var(--hair)}
+.browser .bdots{display:flex;gap:.45vw}
+.browser .bdots i{width:.72vw;height:.72vw;border-radius:50%;display:inline-block}
+.browser .bdots i:nth-child(1){background:#FF5F57}.browser .bdots i:nth-child(2){background:#FEBC2E}.browser .bdots i:nth-child(3){background:#28C840}
+.browser .burl{flex:1;display:flex;align-items:center;gap:.5vw;font-size:.82vw;color:var(--ink3);
+  background:var(--bg);border:1px solid var(--hair);border-radius:.5vw;padding:.4vw .9vw;overflow:hidden;white-space:nowrap}
+.browser .burl .ico{width:.9vw;height:.9vw;color:var(--green);flex:none}
+.browser .bshot{display:block;width:100%;object-fit:cover;object-position:top center}
+/* 截图+说明左右分栏 */
+.sitegrid{display:grid;grid-template-columns:1.25fr .75fr;gap:2.2vw;align-items:center;margin-top:1.2vw}
+.sitegrid.left{grid-template-columns:.75fr 1.25fr}
+.sitegrid .sinfo h3{font-size:1.6vw;margin-bottom:.7vw}
+.sitegrid .sinfo p{font-size:1.02vw;line-height:1.6;color:var(--ink2);margin-bottom:1vw}
+.sitegrid .browser .bshot{height:26vh}
 
 </style>
 </head>
